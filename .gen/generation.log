@@ -1,0 +1,32 @@
+Starting CAP Project Generator...
+Using @sap/cds-dk [9.9.1] from /extbin/globals/bun/global/install/node_modules/@sap/cds-dk
+Using @sap/generator-cap-project [2.0.6] from [/extbin/globals/bun/global/install/node_modules/@sap/generator-cap-project]
+Using root path [/home/user/projects]
+
+Running in Lobby mode: {"projectName":"module2_s_4_connectivity-1787080776107","facets":["nodejs","hana","xsuaa"],"id":"eu10.mx-adoption-lab.module2s4connectivity"}
+
+
+Creating project with hana, nodejs, xsuaa
+
+Adding facet: nodejs
+Adding facet: xsuaa
+Adding facet: hana
+
+Successfully initialized CAP project
+Continue with: code module2_s_4_connectivity-1787080776107 
+
+
+Installing dependencies...
+
+added 116 packages, and audited 117 packages in 4s
+
+38 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+Finished installing dependencies
+
+Done setting up project module2_s_4_connectivity-1787080776107
+Project is ready to use
+

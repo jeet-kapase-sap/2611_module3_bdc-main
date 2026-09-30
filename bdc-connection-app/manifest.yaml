@@ -1,0 +1,25 @@
+# ==============================================================================
+#  Module 3 — Cloud Foundry Deployment Manifest
+#  File: manifest.yaml (root of the CF app directory)
+#
+#  Deploys the BDC connectivity proxy app that sits between the notebook
+#  and SAP Datasphere. Routes all OData requests through BTP Destination Service.
+#
+#  Deploy with: cf push
+# ==============================================================================
+---
+applications:
+- name: bdc-connection                  # App name in CF — appears in BTP cockpit
+  random-route: true                    # Generates a unique URL (e.g. bdc-connection-palm-dugong-js)
+  path: ./                              # Deploy from current directory
+  memory: 1024M                         # 1 GB — sufficient for a lightweight proxy
+  buildpacks:
+  - python_buildpack                    # Uses Python runtime
+  command: python bdc_connectivity.py   # Entry point — starts the Flask/FastAPI proxy server
+  services:
+  - module3_bdc                         # BTP Destination Service instance
+                                        # Source: BTP Cockpit → Service Marketplace → Destination
+                                        # Bind gives the app access to BDC-AI-Data-Foundation destination
+  env:
+    DESTINATION: BDC-AI-Data-Foundation # Default destination name — matches .env in notebook
+    PYTHON_VERSION: 3.11.16            # Pin Python version for reproducibility
