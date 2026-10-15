@@ -1,4 +1,4 @@
-# Module 2: Governed Business Context-Rich Answers from Multi-Source Data Products with SAP Business Data Cloud
+# Module 3: Governed Business Context-Rich Answers from Multi-Source Data Products with SAP Business Data Cloud
 ## Introduction
 
 In this exercise, you'll understand how SAP Business Data Cloud data products serve as the governed data layer for AI-powered analytics, SAP-delivered data products (PurchaseOrder, Supplier) and custom products (Supplier Risk Score) are pre-modeled and ready to consume using SAP Generative AI Hub and SAP BTP connectivity services. The assistant answers natural language questions over governed, multi-source data, from basic single-service queries to complex three-service analytical questions spanning PO history, supplier master, and risk scores with no hallucination.
@@ -77,19 +77,136 @@ You'll learn how to:
 ```
 
 
-## Prerequisite for Bring Your Own Tenant (BYOT) (Note: This step is not required for SAP Sandbox Tenants, as they come preconfigured.)
+## Prerequisite for Bring Your Own Tenant (BYOT)
+
+> **Note:** This step is not required for SAP Sandbox Tenants, as they come preconfigured.
 
 Before starting this exercise, ensure you have:
 
-  - Access to SAP Business Data Cloud, SAP Datasphere - Admin and Modeler Roles.
-  - Installed SAP Data Products PurchaseOrder, PurchaseOrderItem, PurchaseOrderScheduleLine and Supplier into a SAP Datasphere space.
-  - Your SAP AI Core service key (clientid, clientsecret, url, AI_API_URL)
-  - An SAP BTP subaccount with the following services provisioned:
-    - Destination Service instance with a configured SAP Datasphere destination. Type: HTTP and Name it as BDC-AI-Data-Foundation
-    - Connectivity Service instance bound to the CF app. Service: Destination Service, Plan lite, Runtime Environment: Cloud Foundry and Name it as module3_bdc
-  - The SAP BTP Cloud Foundry CLI (cf) installed and logged in
-  - A GitHub account to clone the repository
-  - Basic familiarity with Python and Jupyter notebooks
+- Access to SAP Business Data Cloud, SAP Datasphere — Admin and Modeler Roles.
+
+- Activate SAP BDC Data Products `PurchaseOrder`, `PurchaseOrderItem`, `PurchaseOrderScheduleLine`, and `Supplier`.  
+  Data Package: **SAP Sourcing and Procurement Data Products (SAP S/4HANA Cloud Private Edition)**.  
+  ![SAP BDC Data Products](images/bdcdataproducts.png)
+
+- **Important — Before You Begin:** This exercise uses two SAP Datasphere spaces:
+  - **SAP Managed:** `RI4400`
+  - **Customer Managed:** `AI_DATA_CONTEXT_FOUNDATION`
+
+  The pre-built tables, models, and external dataset are provided as `.json` and `.csv` files, located in the `others` folder of the repository. Before importing, update the Space IDs in the `.json` files to match your landscape. A direct as-is import will fail without this adjustment.
+
+- Install SAP BDC Data Products `PurchaseOrder`, `PurchaseOrderItem`, `PurchaseOrderScheduleLine`, and `Supplier` into a SAP Datasphere space.  
+  > **Note:** You can use an existing space, e.g. `AI_DATA_CONTEXT_FOUNDATION`  
+  ![SAP Datasphere, Request SAP BDC Data Products 1](images/datasphererequestdp_1.png)  
+  ![SAP Datasphere, Request SAP BDC Data Products 2](images/datasphererequestdp_2.png)  
+  ![SAP Datasphere, Request SAP BDC Data Products 3](images/datasphererequestdp_3.png)
+
+- In SAP Datasphere, Space `AI_DATA_CONTEXT_FOUNDATION`, import the following `.json` files:  
+  ![SAP Datasphere, Import JSON Object](images/datasphereimportjson.png)
+  1. `EXT_COUNTRY_RISK_INDEX.json`
+  2. `IL_PO_ITEM.json`
+  3. `V_SUPPLIER.json`
+  4. `HL_PO_HISTORY.json`
+  5. `V_SUPPLIER_RISK_SCORE.json`
+  6. `AM_PO_HISTORY.json`
+  7. `AM_SUPPLIER_RISK_SCORE.json`
+
+- In SAP Datasphere Space `AI_DATA_CONTEXT_FOUNDATION`, navigate to the Local Table `EXT_COUNTRY_RISK_INDEX` and upload the CSV file `EXT_COUNTRY_RISK_INDEX.csv` (Country Risk Index dataset) located in the `others` folder of the repository.  
+  > **Note:** If the dataset does not align with your business context, substitute it with a comparable reference dataset of your choice.  
+  ![SAP Datasphere, Upload the data](images/datasphereuploadthedata.png)
+
+- Your SAP AI Core service key (`clientid`, `clientsecret`, `url`, `AI_API_URL`).
+
+- An SAP BTP subaccount with the following services provisioned:
+  - **Destination Service** instance with a configured SAP Datasphere destination — Type: `HTTP`, Name: `BDC-AI-Data-Foundation`
+    ![SAP BTP, Destination Service_1](images/btpdestinationservice1.png)
+
+    ![SAP BTP, Destination Service_2](images/btpdestinationservice2.png)
+
+  - **Connectivity Service** instance bound to the CF app — Service: `Destination Service`, Plan: `lite`, Runtime Environment: `Cloud Foundry`, Name: `module3_bdc`
+    ![SAP BTP, Connectivity Service](images/btpconntectivityservice.png)
+
+- The SAP BTP Cloud Foundry CLI (`cf`) installed and logged in.
+
+- A GitHub account to clone the repository.
+
+- Basic familiarity with Python and Jupyter notebooks.
 
 ## Architecture
 ![Module 3 Architecture](images/architecture.png)
+
+
+
+## Section 1: Clone & Create the Application
+
+### Open SAP Build Lobby
+Before cloning the repository, you need a running SAP Business Application Studio / SAP Build Code dev space with Python support.
+  1. In SAP Business Application Studio, create a new dev space
+  2. Name your dev space (e.g., userxxFullStack)
+  3. Select Full Stack Cloud Application as the application type
+  4. Under Additional SAP Extensions, enable Python Tools
+  5. Click Create Dev Space
+<img width="1913" height="956" alt="image" src="https://github.tools.sap/user-attachments/assets/9c69e4c9-d414-4f78-8bdd-6c8b8b6f0ae9" />
+
+Wait for the dev space to show RUNNING status, then click on the dev space name to open it.
+<img width="1761" height="114" alt="image" src="https://github.tools.sap/user-attachments/assets/a35f89cd-fe9a-4711-919c-03aa5d512b54" />
+
+### Step 1: Clone the Repository
+Once your dev space is open in the editor, click Clone from Git.
+
+<img width="2560" height="1226" alt="image" src="https://github.tools.sap/user-attachments/assets/21eae266-adac-4f9a-bd04-5b0af40c4973" />
+
+### Step 2: Enter the Repository URL
+In the dialog, enter the following GitHub repository URL:
+``` 
+https://github.tools.sap/I501969/2611_module2_live_data.git
+```
+<img width="1292" height="663" alt="image" src="https://github.tools.sap/user-attachments/assets/eccd8752-1e08-4afc-8c86-bac3f3b8dccb" />
+
+
+### Step 3: Open the Cloned Project
+When prompted "Would you like to open the repository, or add it to the current workspace?", click Open.
+
+<img width="1282" height="770" alt="image" src="https://github.tools.sap/user-attachments/assets/2038d3c5-4f9b-4282-bc93-923e9a8715c6" />
+
+The project will open in SAP Business Application Studio
+
+### Step 4: Create the Environment Configuration File
+Now you'll create a .env file to store your AI Core credentials securely.
+  1. In the Explorer panel, click on create a new file icon
+  2. Name the file name as .env including the dot at the beginning)
+<img width="1123" height="445" alt="image" src="https://github.tools.sap/user-attachments/assets/6d32de86-bf77-4c62-a360-86cf93fd35fe" />
+
+The .env file is now created. In the next section, you'll fill it with your AI Core credentials.
+
+
+> [!NOTE]
+> The .env file stores sensitive credentials locally and is automatically excluded from version control by the .gitignore file. Never commit this file to Git.
+
+
+## Section 6: Configure Jupyter and Python Extensions
+
+  1. Open Jupyter Notebook module2_implementation.ipynb
+<img width="304" height="439" alt="image" src="https://github.tools.sap/user-attachments/assets/cc5d8825-6123-4b18-a099-a3ed0ff90004" />
+
+  2. Read through the notebook until you get to the first code cell in the Setup and configuration section.
+
+  3. Run the first code cell to install the required python modules.
+
+     > [!NOTE]
+     > To execute a code cell, click the play icon beside the cell. It is also possible to execute it by clicking into the code cell and pressing Shift+Enter.
+
+<img width="444" height="87" alt="image" src="https://github.tools.sap/user-attachments/assets/f574c63b-a048-45d6-bc21-efe02bbc8247" />
+
+  4. On the next screen, choose the recommended Python 3.13.
+<img width="600" height="175" alt="image" src="https://github.tools.sap/user-attachments/assets/674be8e4-646c-4c95-9ac6-0c98948fe6b1" />
+
+  5. The required libraries will now start installing. Once the libraries have been successfully installed, the kernel must be restarted. Choose Restart in the menu on the top.
+<img width="730" height="399" alt="image" src="https://github.tools.sap/user-attachments/assets/fa05093e-b023-44d4-b34b-bb380ffc5b5a" />
+
+  6. On the following pop-up window, Choose Restart. It will take a few seconds for the kernel to restart. After it restarts, the environment is ready for use!
+<img width="523" height="164" alt="image" src="https://github.tools.sap/user-attachments/assets/951f583a-d16c-4f08-a70c-847c38ac34a4" />
+
+  7. Follow the step-by-step instructions provided in the Jupyter Notebook to complete the remaining parts of the exercise.
+
+Once you complete the steps in Python Notebook, please take a screenshot of the result and upload the screenshot.

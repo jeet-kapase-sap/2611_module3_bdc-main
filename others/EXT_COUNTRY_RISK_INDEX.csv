@@ -1,0 +1,221 @@
+﻿Year,Country Code,Country Name,Overall Risk Score,Political Stability,Logistics Reliability,Trade Sanctions Flag
+2016,AR,Argentina,48,54,50,N
+2017,AR,Argentina,56,62,58,N
+2018,AR,Argentina,44,50,46,N
+2019,AR,Argentina,58,64,60,N
+2020,AR,Argentina,61,67,63,N
+2021,AR,Argentina,47,53,49,N
+2022,AR,Argentina,55,61,57,N
+2023,AR,Argentina,50,56,52,N
+2024,AR,Argentina,58,64,60,N
+2025,AR,Argentina,49,55,51,N
+2026,AR,Argentina,52,58,55,N
+2016,AU,Australia,11,9,10,N
+2017,AU,Australia,10,8,9,N
+2018,AU,Australia,12,10,11,N
+2019,AU,Australia,10,8,9,N
+2020,AU,Australia,11,9,10,N
+2021,AU,Australia,10,8,9,N
+2022,AU,Australia,9,7,8,N
+2023,AU,Australia,11,9,10,N
+2024,AU,Australia,10,8,9,N
+2025,AU,Australia,10,8,9,N
+2026,AU,Australia,10,8,9,N
+2016,BR,Brazil,52,56,58,N
+2017,BR,Brazil,50,54,56,N
+2018,BR,Brazil,48,52,54,N
+2019,BR,Brazil,46,50,52,N
+2020,BR,Brazil,45,49,51,N
+2021,BR,Brazil,43,47,49,N
+2022,BR,Brazil,42,46,48,N
+2023,BR,Brazil,40,44,47,N
+2024,BR,Brazil,39,43,46,N
+2025,BR,Brazil,38,42,45,N
+2026,BR,Brazil,38,42,45,N
+2016,CH,Switzerland,9,6,7,N
+2017,CH,Switzerland,8,5,6,N
+2018,CH,Switzerland,8,5,6,N
+2019,CH,Switzerland,7,4,5,N
+2020,CH,Switzerland,9,6,7,N
+2021,CH,Switzerland,8,5,6,N
+2022,CH,Switzerland,8,5,6,N
+2023,CH,Switzerland,7,4,5,N
+2024,CH,Switzerland,8,5,6,N
+2025,CH,Switzerland,8,5,6,N
+2026,CH,Switzerland,8,5,6,N
+2016,CN,China,35,40,28,N
+2017,CN,China,37,42,29,N
+2018,CN,China,39,44,31,N
+2019,CN,China,41,46,32,N
+2020,CN,China,43,48,34,N
+2021,CN,China,46,51,36,N
+2022,CN,China,48,54,38,N
+2023,CN,China,50,56,39,N
+2024,CN,China,52,58,40,N
+2025,CN,China,54,59,41,N
+2026,CN,China,55,60,42,N
+2016,CZ,Czech Republic,19,17,16,N
+2017,CZ,Czech Republic,18,16,15,N
+2018,CZ,Czech Republic,17,15,14,N
+2019,CZ,Czech Republic,18,16,15,N
+2020,CZ,Czech Republic,19,17,16,N
+2021,CZ,Czech Republic,18,16,15,N
+2022,CZ,Czech Republic,17,15,14,N
+2023,CZ,Czech Republic,18,16,15,N
+2024,CZ,Czech Republic,18,16,15,N
+2025,CZ,Czech Republic,19,17,16,N
+2026,CZ,Czech Republic,18,16,15,N
+2016,DE,Germany,9,7,8,N
+2017,DE,Germany,10,8,9,N
+2018,DE,Germany,10,8,9,N
+2019,DE,Germany,11,9,10,N
+2020,DE,Germany,10,8,9,N
+2021,DE,Germany,10,8,9,N
+2022,DE,Germany,11,9,10,N
+2023,DE,Germany,10,8,9,N
+2024,DE,Germany,10,8,9,N
+2025,DE,Germany,9,7,8,N
+2026,DE,Germany,10,8,9,N
+2016,EG,Egypt,42,48,44,N
+2017,EG,Egypt,44,50,46,N
+2018,EG,Egypt,46,52,48,N
+2019,EG,Egypt,48,54,50,N
+2020,EG,Egypt,50,56,52,N
+2021,EG,Egypt,53,59,55,N
+2022,EG,Egypt,55,62,58,N
+2023,EG,Egypt,57,64,60,N
+2024,EG,Egypt,59,66,62,N
+2025,EG,Egypt,61,67,64,N
+2026,EG,Egypt,62,68,65,N
+2016,FR,France,13,11,12,N
+2017,FR,France,12,10,11,N
+2018,FR,France,11,9,10,N
+2019,FR,France,12,10,11,N
+2020,FR,France,13,11,12,N
+2021,FR,France,12,10,11,N
+2022,FR,France,11,9,10,N
+2023,FR,France,12,10,11,N
+2024,FR,France,12,10,11,N
+2025,FR,France,13,11,12,N
+2026,FR,France,12,10,11,N
+2016,GB,United Kingdom,10,8,9,N
+2017,GB,United Kingdom,11,9,10,N
+2018,GB,United Kingdom,12,10,11,N
+2019,GB,United Kingdom,11,9,10,N
+2020,GB,United Kingdom,12,10,11,N
+2021,GB,United Kingdom,11,9,10,N
+2022,GB,United Kingdom,10,8,9,N
+2023,GB,United Kingdom,11,9,10,N
+2024,GB,United Kingdom,11,9,10,N
+2025,GB,United Kingdom,12,10,11,N
+2026,GB,United Kingdom,11,9,10,N
+2016,HK,Hong Kong,25,30,16,N
+2017,HK,Hong Kong,27,32,17,N
+2018,HK,Hong Kong,29,34,19,N
+2019,HK,Hong Kong,32,38,21,N
+2020,HK,Hong Kong,35,41,22,N
+2021,HK,Hong Kong,37,43,24,N
+2022,HK,Hong Kong,39,45,25,N
+2023,HK,Hong Kong,41,48,26,N
+2024,HK,Hong Kong,43,50,27,N
+2025,HK,Hong Kong,44,51,28,N
+2026,HK,Hong Kong,45,52,28,N
+2016,HU,Hungary,22,26,19,N
+2017,HU,Hungary,23,27,20,N
+2018,HU,Hungary,25,29,21,N
+2019,HU,Hungary,26,30,22,N
+2020,HU,Hungary,28,33,24,N
+2021,HU,Hungary,29,34,25,N
+2022,HU,Hungary,31,36,26,N
+2023,HU,Hungary,32,37,27,N
+2024,HU,Hungary,33,38,28,N
+2025,HU,Hungary,34,39,29,N
+2026,HU,Hungary,35,40,30,N
+2016,ID,Indonesia,58,62,66,N
+2017,ID,Indonesia,56,60,64,N
+2018,ID,Indonesia,54,58,62,N
+2019,ID,Indonesia,52,56,60,N
+2020,ID,Indonesia,50,54,58,N
+2021,ID,Indonesia,49,53,57,N
+2022,ID,Indonesia,48,52,55,N
+2023,ID,Indonesia,47,51,54,N
+2024,ID,Indonesia,46,50,53,N
+2025,ID,Indonesia,45,49,52,N
+2026,ID,Indonesia,44,48,52,N
+2016,IN,India,56,62,64,N
+2017,IN,India,54,60,62,N
+2018,IN,India,52,58,60,N
+2019,IN,India,50,56,58,N
+2020,IN,India,48,54,56,N
+2021,IN,India,47,53,55,N
+2022,IN,India,46,52,54,N
+2023,IN,India,44,50,52,N
+2024,IN,India,43,49,51,N
+2025,IN,India,42,48,50,N
+2026,IN,India,42,48,50,N
+2016,IT,Italy,16,15,17,N
+2017,IT,Italy,15,14,16,N
+2018,IT,Italy,14,13,15,N
+2019,IT,Italy,15,14,16,N
+2020,IT,Italy,16,15,17,N
+2021,IT,Italy,15,14,16,N
+2022,IT,Italy,14,13,15,N
+2023,IT,Italy,15,14,16,N
+2024,IT,Italy,15,14,16,N
+2025,IT,Italy,16,15,17,N
+2026,IT,Italy,15,14,16,N
+2016,JP,Japan,10,8,7,N
+2017,JP,Japan,9,7,6,N
+2018,JP,Japan,8,6,5,N
+2019,JP,Japan,9,7,6,N
+2020,JP,Japan,10,8,7,N
+2021,JP,Japan,9,7,6,N
+2022,JP,Japan,8,6,5,N
+2023,JP,Japan,9,7,6,N
+2024,JP,Japan,9,7,6,N
+2025,JP,Japan,10,8,7,N
+2026,JP,Japan,9,7,6,N
+2016,PL,Poland,21,23,19,N
+2017,PL,Poland,20,22,18,N
+2018,PL,Poland,19,21,17,N
+2019,PL,Poland,20,22,18,N
+2020,PL,Poland,21,23,19,N
+2021,PL,Poland,20,22,18,N
+2022,PL,Poland,19,21,17,N
+2023,PL,Poland,20,22,18,N
+2024,PL,Poland,20,22,18,N
+2025,PL,Poland,21,23,19,N
+2026,PL,Poland,20,22,18,N
+2016,SG,Singapore,8,6,6,N
+2017,SG,Singapore,7,5,5,N
+2018,SG,Singapore,7,5,5,N
+2019,SG,Singapore,6,4,4,N
+2020,SG,Singapore,8,6,6,N
+2021,SG,Singapore,7,5,5,N
+2022,SG,Singapore,7,5,5,N
+2023,SG,Singapore,6,4,4,N
+2024,SG,Singapore,7,5,5,N
+2025,SG,Singapore,7,5,5,N
+2026,SG,Singapore,7,5,5,N
+2016,US,United States,15,13,11,N
+2017,US,United States,16,14,12,N
+2018,US,United States,17,15,13,N
+2019,US,United States,16,14,12,N
+2020,US,United States,15,13,11,N
+2021,US,United States,16,14,12,N
+2022,US,United States,17,15,13,N
+2023,US,United States,16,14,12,N
+2024,US,United States,16,14,12,N
+2025,US,United States,15,13,11,N
+2026,US,United States,16,14,12,N
+2016,RU,Russia,55,52,48,N
+2017,RU,Russia,58,55,50,N
+2018,RU,Russia,60,57,52,N
+2019,RU,Russia,63,60,55,N
+2020,RU,Russia,68,65,60,N
+2021,RU,Russia,72,69,64,N
+2022,RU,Russia,78,75,70,Y
+2023,RU,Russia,82,79,74,Y
+2024,RU,Russia,86,83,78,Y
+2025,RU,Russia,89,86,82,Y
+2026,RU,Russia,92,88,85,Y
