@@ -90,7 +90,7 @@ Before starting this exercise, ensure you have access to:
 
 
 - Activate SAP BDC Data Products `PurchaseOrder`, `PurchaseOrderItem`, `PurchaseOrderScheduleLine`, and `Supplier`.  
-  Data Package: **SAP Sourcing and Procurement Data Products (SAP S/4HANA Cloud Private Edition)**.  
+  Data Package: **SAP Sourcing and Procurement Data Products (SAP S/4HANA Cloud Private Edition)**. Refer to [SAP Business Data Cloud — Activating Data Products](https://help.sap.com/docs/business-data-cloud/administering-sap-business-data-cloud/activating-data-products) for detailed steps. 
   ![SAP BDC Data Products](images/bdcdataproducts.png)
 
 - **Important — Before You Begin:** This exercise uses two SAP Datasphere spaces:
@@ -99,7 +99,7 @@ Before starting this exercise, ensure you have access to:
 
   The pre-built tables, models, and external dataset are provided as `.json` and `.csv` files, located in the `others` folder of the repository. Before importing, update the Space IDs in the `.json` files to match your landscape. A direct as-is import will fail without this adjustment.
 
-- Install SAP BDC Data Products `PurchaseOrder`, `PurchaseOrderItem`, `PurchaseOrderScheduleLine`, and `Supplier` into a SAP Datasphere space.  
+- Requesting SAP BDC Data Products `PurchaseOrder`, `PurchaseOrderItem`, `PurchaseOrderScheduleLine`, and `Supplier` Access into a SAP Datasphere space. Refer to [SAP Datasphere — Requesting Access to Data Products](https://help.sap.com/docs/SAP_DATASPHERE/c8a54ee704e94e15926551293243fd1d/ea7cb802cbea47b39a441888873c3a49.html) for detailed steps.  
   > **Note:** You can use an existing space, e.g. `AI_DATA_CONTEXT_FOUNDATION`  
   ![SAP Datasphere, Request SAP BDC Data Products 1](images/datasphererequestdp_1.png)  
   ![SAP Datasphere, Request SAP BDC Data Products 2](images/datasphererequestdp_2.png)  
@@ -118,6 +118,17 @@ Before starting this exercise, ensure you have access to:
 - In SAP Datasphere Space `AI_DATA_CONTEXT_FOUNDATION`, navigate to the Local Table `EXT_COUNTRY_RISK_INDEX` and upload the CSV file `EXT_COUNTRY_RISK_INDEX.csv` (Country Risk Index dataset) located in the `others` folder of the repository.  
   > **Note:** If the dataset does not align with your business context, substitute it with a comparable reference dataset of your choice.  
   ![SAP Datasphere, Upload the data](images/datasphereuploadthedata.png)
+
+- In SAP Datasphere, expose the following OData services for consumption. Ensure the analytical and relational endpoints are activated for Space `AI_DATA_CONTEXT_FOUNDATION`:
+
+  | Object | Type | OData Endpoint |
+  |--------|------|----------------|
+  | `AM_PO_HISTORY` | Analytical | `/api/v1/datasphere/consumption/analytical/AI_DATA_FOUNDATION/AM_PO_HISTORY/AM_PO_HISTORY` |
+  | `V_SUPPLIER` | Relational | `/api/v1/datasphere/consumption/relational/AI_DATA_FOUNDATION/V_SUPPLIER/V_SUPPLIER/SET` |
+  | `AM_SUPPLIER_RISK_SCORE` | Analytical | `/api/v1/datasphere/consumption/analytical/AI_DATA_FOUNDATION/AM_SUPPLIER_RISK_SCORE/AM_SUPPLIER_RISK_SCORE` |
+
+  > **Note:** To expose an OData service in SAP Datasphere, navigate to the respective Analytic Model or View, open the properties, and enable **Expose for Consumption**. Refer to [SAP Datasphere — Consuming Data via OData](https://help.sap.com/docs/SAP_DATASPHERE) for detailed steps.
+
 
 - An SAP BTP subaccount with the following services provisioned:
   - **Destination Service** instance with a configured SAP Datasphere destination — Type: `HTTP`, Name: `BDC-AI-Data-Foundation`
