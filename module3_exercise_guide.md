@@ -81,9 +81,13 @@ You'll learn how to:
 
 > **Note:** This step is not required for SAP Sandbox Tenants, as they come preconfigured.
 
-Before starting this exercise, ensure you have:
+Before starting this exercise, ensure you have access to:
 
-- Access to SAP Business Data Cloud, SAP Datasphere — Admin and Modeler Roles.
+- **SAP Business Data Cloud & SAP Datasphere** — Admin and Modeler Roles.
+- **SAP BTP** subaccount with the necessary roles.
+- **SAP Build Code** (SAP Business Application Studio).
+- A running **SAP AI Core** deployment with GPT-5 (or any model of your choice), including your deployment URL and service key (`clientid`, `clientsecret`, `url`, `AI_API_URL`).
+
 
 - Activate SAP BDC Data Products `PurchaseOrder`, `PurchaseOrderItem`, `PurchaseOrderScheduleLine`, and `Supplier`.  
   Data Package: **SAP Sourcing and Procurement Data Products (SAP S/4HANA Cloud Private Edition)**.  
@@ -114,8 +118,6 @@ Before starting this exercise, ensure you have:
 - In SAP Datasphere Space `AI_DATA_CONTEXT_FOUNDATION`, navigate to the Local Table `EXT_COUNTRY_RISK_INDEX` and upload the CSV file `EXT_COUNTRY_RISK_INDEX.csv` (Country Risk Index dataset) located in the `others` folder of the repository.  
   > **Note:** If the dataset does not align with your business context, substitute it with a comparable reference dataset of your choice.  
   ![SAP Datasphere, Upload the data](images/datasphereuploadthedata.png)
-
-- Your SAP AI Core service key (`clientid`, `clientsecret`, `url`, `AI_API_URL`).
 
 - An SAP BTP subaccount with the following services provisioned:
   - **Destination Service** instance with a configured SAP Datasphere destination — Type: `HTTP`, Name: `BDC-AI-Data-Foundation`
@@ -159,7 +161,7 @@ Once your dev space is open in the editor, click Clone from Git.
 ### Step 2: Enter the Repository URL
 In the dialog, enter the following GitHub repository URL:
 ``` 
-https://github.tools.sap/I501969/2611_module2_live_data.git
+https://github.tools.sap/IA-C/2611_module3_bdc-main.git
 ```
 <img width="1292" height="663" alt="image" src="https://github.tools.sap/user-attachments/assets/eccd8752-1e08-4afc-8c86-bac3f3b8dccb" />
 
@@ -209,4 +211,3 @@ The .env file is now created. In the next section, you'll fill it with your AI C
 
   7. Follow the step-by-step instructions provided in the Jupyter Notebook to complete the remaining parts of the exercise.
 
-Once you complete the steps in Python Notebook, please take a screenshot of the result and upload the screenshot.
