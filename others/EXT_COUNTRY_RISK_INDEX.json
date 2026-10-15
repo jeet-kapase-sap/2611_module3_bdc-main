@@ -1,0 +1,97 @@
+{
+  "definitions": {
+    "EXT_COUNTRY_RISK_INDEX": {
+      "kind": "entity",
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "elements": {
+        "Year": {
+          "@EndUserText.label": "Year",
+          "type": "cds.String",
+          "length": 4,
+          "key": true,
+          "notNull": true,
+          "@Semantics.calendar.year": true
+        },
+        "Country_Code": {
+          "@EndUserText.label": "Country Code",
+          "type": "cds.String",
+          "length": 3,
+          "key": true,
+          "notNull": true,
+          "@ObjectModel.text.element": [
+            {
+              "=": "Country_Name"
+            }
+          ]
+        },
+        "Country_Name": {
+          "@EndUserText.label": "Country Name",
+          "type": "cds.String",
+          "length": 100,
+          "@Semantics.text": true
+        },
+        "Overall_Risk_Score": {
+          "@EndUserText.label": "Overall Risk Score",
+          "type": "cds.Integer",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          },
+          "@Aggregation.default": {
+            "#": "SUM"
+          }
+        },
+        "Political_Stability": {
+          "@EndUserText.label": "Political Stability",
+          "type": "cds.Integer",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          },
+          "@Aggregation.default": {
+            "#": "SUM"
+          }
+        },
+        "Logistics_Reliability": {
+          "@EndUserText.label": "Logistics Reliability",
+          "type": "cds.Integer",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          },
+          "@Aggregation.default": {
+            "#": "SUM"
+          }
+        },
+        "Trade_Sanctions_Flag": {
+          "@EndUserText.label": "Trade Sanctions Flag",
+          "type": "cds.String",
+          "length": 1,
+          "default": {
+            "val": "N"
+          }
+        }
+      },
+      "@EndUserText.label": "EXT_COUNTRY_RISK_INDEX",
+      "@ObjectModel.modelingPattern": {
+        "#": "ANALYTICAL_FACT"
+      },
+      "@DataWarehouse.primaryKey.indexType": {
+        "#": "INVERTED_INDIVIDUAL"
+      },
+      "_meta": {
+        "dependencies": {
+          "folderAssignment": null
+        }
+      }
+    }
+  },
+  "version": {
+    "csn": "1.0"
+  },
+  "meta": {
+    "creator": "CDS Compiler v1.19.2"
+  },
+  "$version": "1.0"
+}
