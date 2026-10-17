@@ -127,10 +127,23 @@ Before starting this exercise, ensure you have access to:
   | `V_SUPPLIER` | Relational | `/api/v1/datasphere/consumption/relational/AI_DATA_FOUNDATION/V_SUPPLIER/V_SUPPLIER/SET` |
   | `AM_SUPPLIER_RISK_SCORE` | Analytical | `/api/v1/datasphere/consumption/analytical/AI_DATA_FOUNDATION/AM_SUPPLIER_RISK_SCORE/AM_SUPPLIER_RISK_SCORE` |
 
-  > **Note:** To expose an OData service in SAP Datasphere, navigate to the respective Analytic Model or View, open the properties, and enable **Expose for Consumption**. Refer to [SAP Datasphere — Consuming Data via OData](https://help.sap.com/docs/SAP_DATASPHERE) for detailed steps.
+  > **Note:** To expose an OData service in SAP Datasphere, navigate to the respective Analytic Model or View, open the properties, and enable **Expose for Consumption**. Refer to [SAP Datasphere — Consuming Data via OData](https://help.sap.com/docs/SAP_DATASPHERE/43509d67b8b84e66a30851e832f66911/7a453609c8694b029493e7d87e0de60a.html) for detailed steps.
+    ![SAP Datasphere, Expose for Consumption](images/generateodata1.png)
+
+    ![SAP Datasphere, Generate Odata Request](images/generateodata2.png)
 
 
 - An SAP BTP subaccount with the following services provisioned:
+  - **Integration Between SAP Datasphere and SAP BTP Destination Service** Refer to [How to Consume SAP Datasphere Analytical Models Using OData Services: Part 1 and Part 2 sections only](https://community.sap.com/t5/technology-blog-posts-by-sap/how-to-consume-sap-datasphere-analytical-models-to-sap-fiori-using-odata/ba-p/14445184) for detailed steps.
+
+  1. `Expose the Analytical Model for Consumption`
+  2. `Establish Trust Between Datasphere and BTP`
+  3. `Configure OAuth in SAP Datasphere - Choose approach that fits best in your scenario`
+
+    ![SAP Datasphere, OAuth Client_1](datasphereoauthclient1.png)
+
+    ![SAP Datasphere, OAuth Client_2](datasphereoauthclient2.png)
+  
   - **Destination Service** instance with a configured SAP Datasphere destination — Type: `HTTP`, Name: `BDC-AI-Data-Foundation`
     ![SAP BTP, Destination Service_1](images/btpdestinationservice1.png)
 
