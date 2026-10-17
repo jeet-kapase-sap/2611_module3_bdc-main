@@ -138,6 +138,12 @@ Before starting this exercise, ensure you have access to:
 
   1. `Expose the Analytical Model for Consumption`
   2. `Establish Trust Between Datasphere and BTP`
+
+    ![SAP BTP, Export XML IDP Trust Configuration](images/btpdestinationtrust.png)
+
+    ![SAP Datasphere, Trusted Identity Providers](images/dataspheretrustedidp.png)
+
+
   3. `Configure OAuth in SAP Datasphere - Choose Oauth Client Purpose: API Access or Technical User that fits in your scenario`
 
     ![SAP Datasphere, OAuth Client_1](images/datasphereoauthclient1.png)
