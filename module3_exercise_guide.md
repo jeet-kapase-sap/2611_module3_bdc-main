@@ -138,7 +138,7 @@ Before starting this exercise, ensure you have access to:
 
   1. `Expose the Analytical Model for Consumption`
   2. `Establish Trust Between Datasphere and BTP`
-  3. `Configure OAuth in SAP Datasphere - Choose approach that fits best in your scenario`
+  3. `Configure OAuth in SAP Datasphere - Choose Oauth Client Purpose: API Access or Technical User that fits in your scenario`
 
     ![SAP Datasphere, OAuth Client_1](images/datasphereoauthclient1.png)
 
