@@ -140,9 +140,9 @@ Before starting this exercise, ensure you have access to:
   2. `Establish Trust Between Datasphere and BTP`
   3. `Configure OAuth in SAP Datasphere - Choose approach that fits best in your scenario`
 
-    ![SAP Datasphere, OAuth Client_1](datasphereoauthclient1.png)
+    ![SAP Datasphere, OAuth Client_1](images/datasphereoauthclient1.png)
 
-    ![SAP Datasphere, OAuth Client_2](datasphereoauthclient2.png)
+    ![SAP Datasphere, OAuth Client_2](images/datasphereoauthclient2.png)
   
   - **Destination Service** instance with a configured SAP Datasphere destination — Type: `HTTP`, Name: `BDC-AI-Data-Foundation`
     ![SAP BTP, Destination Service_1](images/btpdestinationservice1.png)
