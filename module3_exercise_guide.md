@@ -101,12 +101,16 @@ Before starting this exercise, ensure you have access to:
 
 - Requesting SAP BDC Data Products `PurchaseOrder`, `PurchaseOrderItem`, `PurchaseOrderScheduleLine`, and `Supplier` Access into a SAP Datasphere space. Refer to [SAP Datasphere — Requesting Access to Data Products](https://help.sap.com/docs/SAP_DATASPHERE/c8a54ee704e94e15926551293243fd1d/ea7cb802cbea47b39a441888873c3a49.html) for detailed steps.  
   > **Note:** You can use an existing space, e.g. `AI_DATA_CONTEXT_FOUNDATION`  
-  ![SAP Datasphere, Request SAP BDC Data Products 1](images/datasphererequestdp_1.png)  
+  ![SAP Datasphere, Request SAP BDC Data Products 1](images/datasphererequestdp_1.png) 
+
   ![SAP Datasphere, Request SAP BDC Data Products 2](images/datasphererequestdp_2.png)  
+  
   ![SAP Datasphere, Request SAP BDC Data Products 3](images/datasphererequestdp_3.png)
 
 - In SAP Datasphere, Space `AI_DATA_CONTEXT_FOUNDATION`, import the following `.json` files:  
+  
   ![SAP Datasphere, Import JSON Object](images/datasphereimportjson.png)
+  
   1. `EXT_COUNTRY_RISK_INDEX.json`
   2. `IL_PO_ITEM.json`
   3. `V_SUPPLIER.json`
@@ -128,6 +132,7 @@ Before starting this exercise, ensure you have access to:
   | `AM_SUPPLIER_RISK_SCORE` | Analytical | `/api/v1/datasphere/consumption/analytical/AI_DATA_FOUNDATION/AM_SUPPLIER_RISK_SCORE/AM_SUPPLIER_RISK_SCORE` |
 
   > **Note:** To expose an OData service in SAP Datasphere, navigate to the respective Analytic Model or View, open the properties, and enable **Expose for Consumption**. Refer to [SAP Datasphere — Consuming Data via OData](https://help.sap.com/docs/SAP_DATASPHERE/43509d67b8b84e66a30851e832f66911/7a453609c8694b029493e7d87e0de60a.html) for detailed steps.
+
     ![SAP Datasphere, Expose for Consumption](images/generateodata1.png)
 
     ![SAP Datasphere, Generate Odata Request](images/generateodata2.png)
@@ -136,19 +141,19 @@ Before starting this exercise, ensure you have access to:
 - An SAP BTP subaccount with the following services provisioned:
   - **Integration Between SAP Datasphere and SAP BTP Destination Service** Refer to [How to Consume SAP Datasphere Analytical Models Using OData Services: Part 1 and Part 2 sections only](https://community.sap.com/t5/technology-blog-posts-by-sap/how-to-consume-sap-datasphere-analytical-models-to-sap-fiori-using-odata/ba-p/14445184) for detailed steps.
 
-  1. `Expose the Analytical Model for Consumption`
-  2. `Establish Trust Between Datasphere and BTP`
+    1. `Expose the Analytical Model for Consumption`
+    2. `Establish Trust Between Datasphere and BTP`
 
-      ![SAP BTP, Export XML IDP Trust Configuration](images/btpdestinationtrust.png)
+        ![SAP BTP, Export XML IDP Trust Configuration](images/btpdestinationtrust.png)
 
-      ![SAP Datasphere, Trusted Identity Providers](images/dataspheretrustedidp.png)
+        ![SAP Datasphere, Trusted Identity Providers](images/dataspheretrustedidp.png)
 
 
-  3. `Configure OAuth in SAP Datasphere - Choose Oauth Client Purpose: API Access or Technical User that fits in your scenario`
+    3. `Configure OAuth in SAP Datasphere - Choose Oauth Client Purpose: API Access or Technical User that fits in your scenario`
 
-      ![SAP Datasphere, OAuth Client_1](images/datasphereoauthclient1.png)
+        ![SAP Datasphere, OAuth Client_1](images/datasphereoauthclient1.png)
 
-      ![SAP Datasphere, OAuth Client_2](images/datasphereoauthclient2.png)
+        ![SAP Datasphere, OAuth Client_2](images/datasphereoauthclient2.png)
   
   - **Destination Service** instance with a configured SAP Datasphere destination — Type: `HTTP`, Name: `BDC-AI-Data-Foundation`
     ![SAP BTP, Destination Service_1](images/btpdestinationservice1.png)
