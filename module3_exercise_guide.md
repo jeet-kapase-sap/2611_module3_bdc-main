@@ -168,6 +168,34 @@ Before starting this exercise, ensure you have access to:
 - A GitHub account to clone the repository.
 
 - Basic familiarity with Python and Jupyter notebooks.
+  
+- **Gather Your AI Core Credential** You need several credentials from SAP BTP Cockpit and AI Launchpad. Let's collect them step by step.
+
+  1. Open SAP BTP Cockpit
+  2. Navigate to your subaccount → Services → Instances and Subscriptions
+  3. Find your SAP AI Core instance (if you dont have one create a AI Core extended plan instance)
+  4. Click on the instance, then click 1 key under the Credentials column
+    <img width="1440" height="635" alt="image" src="https://github.tools.sap/user-attachments/assets/e36a9c2d-7661-4985-9003-a47c0229efb2" />
+  5. Click on the service key name (e.g., aicore-key) to view the credentials
+  6. You'll see a JSON structure with the following important fields:
+     <img width="735" height="476" alt="image" src="https://github.tools.sap/user-attachments/assets/dad4ff1d-0591-45a6-a3f4-0715fe92ef9f" />
+     
+     Note these values (you'll use them in Step 10):
+      - clientid
+      - clientsecret
+      - url (this is the auth URL)
+      - serviceurls.AI_API_URL (this is your AI Core base URL, you need to add /v2 in the end)
+        
+**Get Resource Group from AI Launchpad**
+  7. Open SAP AI Launchpad
+  8. Navigate to Workspaces
+  9. Note the workspace and resource group name (e.g., "default")
+     <img width="1540" height="529" alt="image" src="https://github.tools.sap/user-attachments/assets/6fcb3001-b270-4402-a0a1-38c73d1bc30f" />
+**Get GPT5 Deployment URL**
+  10. In AI Launchpad, go to ML Operations → Deployments
+      <img width="3420" height="1972" alt="image" src="https://github.tools.sap/user-attachments/assets/ee7aa36f-a7d5-4bb4-8c57-4a7a92013091" />
+  11. Find GPT-5 deployment URL (it will look like https://api.ai.prod....ondemand.com/v2/inference/deployments/d...)
+      <img width="1837" height="736" alt="image" src="https://github.tools.sap/user-attachments/assets/ec9e22c5-1633-465a-9016-7451c7026a3d" />
 
 ## Architecture
 ![Module 3 Architecture](images/architecture.png)
