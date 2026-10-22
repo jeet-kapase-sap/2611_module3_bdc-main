@@ -181,19 +181,19 @@ Before starting this exercise, ensure you have access to:
 ### Open SAP Build Lobby
 Before cloning the repository, you need a running SAP Business Application Studio / SAP Build Code dev space with Python support.
   1. In SAP Business Application Studio, create a new dev space
-  2. Name your dev space (e.g., userxxFullStack)
+  2. Name your dev space (e.g., USERXXX_FullStack)
   3. Select Full Stack Cloud Application as the application type
   4. Under Additional SAP Extensions, enable Python Tools
   5. Click Create Dev Space
-<img width="1913" height="956" alt="image" src="images/btpconnectivityservice.png" />
+<img width="1913" height="956" alt="image" src="images/bas1.png" />
 
 Wait for the dev space to show RUNNING status, then click on the dev space name to open it.
-<img width="1761" height="114" alt="image" src="https://github.tools.sap/user-attachments/assets/a35f89cd-fe9a-4711-919c-03aa5d512b54" />
+<img width="1761" height="114" alt="image" src="images/bas2.png" />
 
 ### Step 1: Clone the Repository
 Once your dev space is open in the editor, click Clone from Git.
 
-<img width="2560" height="1226" alt="image" src="https://github.tools.sap/user-attachments/assets/21eae266-adac-4f9a-bd04-5b0af40c4973" />
+<img width="2560" height="1226" alt="image" src="images/bas3.png" />
 
 ### Step 2: Enter the Repository URL
 In the dialog, enter the following GitHub repository URL:
