@@ -185,32 +185,32 @@ Before cloning the repository, you need a running SAP Business Application Studi
   3. Select Full Stack Cloud Application as the application type
   4. Under Additional SAP Extensions, enable Python Tools
   5. Click Create Dev Space
+
 <img width="1913" height="956" alt="image" src="images/bas1.png" />
 
 Wait for the dev space to show RUNNING status, then click on the dev space name to open it.
+
 ![Running Status](images/bas2.png)
 
-### Step 1: Clone the Repository
+### Step 1: Clone Git the Repository and Enter the Git Repository URL
 Once your dev space is open in the editor, click Clone from Git.
 
-<img width="2560" height="1226" alt="image" src="images/bas3.png" />
-
-### Step 2: Enter the Repository URL
 In the dialog, enter the following GitHub repository URL:
 ``` 
 https://github.com/jeet-kapase-sap/2611_module3_bdc-main.git
 ```
-<img width="1292" height="663" alt="image" src="https://github.tools.sap/user-attachments/assets/eccd8752-1e08-4afc-8c86-bac3f3b8dccb" />
+
+<img width="2560" height="1226" alt="image" src="images/bas3.png" />
 
 
-### Step 3: Open the Cloned Project
+### Step 2: Open the Cloned Project
 When prompted "Would you like to open the repository, or add it to the current workspace?", click Open.
 
 <img width="1282" height="770" alt="image" src="https://github.tools.sap/user-attachments/assets/2038d3c5-4f9b-4282-bc93-923e9a8715c6" />
 
 The project will open in SAP Business Application Studio
 
-### Step 4: Create the Environment Configuration File
+### Step 3: Create the Environment Configuration File
 Now you'll create a .env file to store your AI Core credentials securely.
   1. In the Explorer panel, click on create a new file icon
   2. Name the file name as .env including the dot at the beginning)
