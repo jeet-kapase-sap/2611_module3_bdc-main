@@ -188,7 +188,7 @@ Before cloning the repository, you need a running SAP Business Application Studi
 <img width="1913" height="956" alt="image" src="images/bas1.png" />
 
 Wait for the dev space to show RUNNING status, then click on the dev space name to open it.
-<img width="1761" height="114" alt="image" src="images/bas2.png" />
+![Running Status](images/bas2.png)
 
 ### Step 1: Clone the Repository
 Once your dev space is open in the editor, click Clone from Git.
