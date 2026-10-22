@@ -206,7 +206,7 @@ https://github.com/jeet-kapase-sap/2611_module3_bdc-main.git
 ### Step 2: Open the Cloned Project
 When prompted "Would you like to open the repository, or add it to the current workspace?", click Open.
 
-<img width="1282" height="770" alt="image" src="https://github.tools.sap/user-attachments/assets/2038d3c5-4f9b-4282-bc93-923e9a8715c6" />
+![Open the Project](images/bas4.png)
 
 The project will open in SAP Business Application Studio
 
@@ -214,7 +214,8 @@ The project will open in SAP Business Application Studio
 Now you'll create a .env file to store your AI Core credentials securely.
   1. In the Explorer panel, click on create a new file icon
   2. Name the file name as .env including the dot at the beginning)
-<img width="1123" height="445" alt="image" src="https://github.tools.sap/user-attachments/assets/6d32de86-bf77-4c62-a360-86cf93fd35fe" />
+
+![.env file](images/envfile.png)
 
 The .env file is now created. In the next section, you'll fill it with your AI Core credentials.
 
