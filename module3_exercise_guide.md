@@ -79,7 +79,9 @@ You'll learn how to:
 
 ## Prerequisite for Bring Your Own Tenant (BYOT)
 
-> **Note:** This step is not required for SAP Sandbox Tenants, as they come preconfigured.
+> **Note:** If you are unable to bring your own tenant, sign up for a [free SAP BTP Trial Account](https://discovery-center.cloud.sap/card/58250857-1c8e-440f-800a-a264969a3bc8) and a [free SAP Business Application Studio](https://help.sap.com/docs/bas/sap-business-application-studio/getting-started-with-trial-account)ensure both are fully set up and accessible before the hands-on session. Trial provisioning can take up to 24 hours. Please do not wait until the day of the workshop.
+ ![SAP BDC Data Products](images/btpbastrial.png)
+
 
 Before starting this exercise, ensure you have access to:
 
@@ -128,7 +130,7 @@ Before starting this exercise, ensure you have access to:
   | Object | Type | OData Endpoint |
   |--------|------|----------------|
   | `AM_PO_HISTORY` | Analytical | `/api/v1/datasphere/consumption/analytical/AI_DATA_FOUNDATION/AM_PO_HISTORY/AM_PO_HISTORY` |
-  | `V_SUPPLIER` | Relational | `/api/v1/datasphere/consumption/relational/AI_DATA_FOUNDATION/V_SUPPLIER/V_SUPPLIER/SET` |
+  | `V_SUPPLIER` | Relational | `/api/v1/datasphere/consumption/relational/AI_DATA_FOUNDATION/V_SUPPLIER/V_SUPPLIER` |
   | `AM_SUPPLIER_RISK_SCORE` | Analytical | `/api/v1/datasphere/consumption/analytical/AI_DATA_FOUNDATION/AM_SUPPLIER_RISK_SCORE/AM_SUPPLIER_RISK_SCORE` |
 
   > **Note:** To expose an OData service in SAP Datasphere, navigate to the respective Analytic Model or View, open the properties, and enable **Expose for Consumption**. Refer to [SAP Datasphere — Consuming Data via OData](https://help.sap.com/docs/SAP_DATASPHERE/43509d67b8b84e66a30851e832f66911/7a453609c8694b029493e7d87e0de60a.html) for detailed steps.
@@ -183,7 +185,7 @@ Before cloning the repository, you need a running SAP Business Application Studi
   3. Select Full Stack Cloud Application as the application type
   4. Under Additional SAP Extensions, enable Python Tools
   5. Click Create Dev Space
-<img width="1913" height="956" alt="image" src="https://github.tools.sap/user-attachments/assets/9c69e4c9-d414-4f78-8bdd-6c8b8b6f0ae9" />
+<img width="1913" height="956" alt="image" src="images/btpconnectivityservice.png" />
 
 Wait for the dev space to show RUNNING status, then click on the dev space name to open it.
 <img width="1761" height="114" alt="image" src="https://github.tools.sap/user-attachments/assets/a35f89cd-fe9a-4711-919c-03aa5d512b54" />
@@ -196,7 +198,7 @@ Once your dev space is open in the editor, click Clone from Git.
 ### Step 2: Enter the Repository URL
 In the dialog, enter the following GitHub repository URL:
 ``` 
-https://github.tools.sap/IA-C/2611_module3_bdc-main.git
+https://github.com/jeet-kapase-sap/2611_module3_bdc-main.git
 ```
 <img width="1292" height="663" alt="image" src="https://github.tools.sap/user-attachments/assets/eccd8752-1e08-4afc-8c86-bac3f3b8dccb" />
 
