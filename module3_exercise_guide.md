@@ -260,7 +260,7 @@ Set up the integration between SAP Datasphere and SAP BTP Destination Service. R
 
 ## Section 1: Clone & Create the Application
 
-### Open SAP Build Lobby
+### Open SAP Business Application Studio
 
 Before cloning the repository, you need a running SAP Business Application Studio / SAP Build Code dev space with Python support.
 
