@@ -262,8 +262,9 @@ Set up the integration between SAP Datasphere and SAP BTP Destination Service. R
 
 ---
 
-##> [!CAUTION]**STOP:** 
-> The hands-on sections below are intended to be performed on the event day. Complete all prerequisite setup steps above before the session. Do not proceed until instructed by the workshop facilitator.
+> [!CAUTION]
+## > 🛑 STOP!
+The hands-on sections below are intended to be performed on the event day. Complete all prerequisite setup steps above before the session. Do not proceed until instructed by the workshop facilitator.
 
 ## Section 1: Clone & Create the Application
 
