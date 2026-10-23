@@ -361,7 +361,7 @@ The `.env` file is now created. In the next section, you'll fill it with your AI
   
    ![Select Kernel](images/selectkernel.png)
 
-3. Open the Jupyter Notebook [module3_implementation.ipynb](https://github.com/jeet-kapase-sap/2611_module3_bdc-main/blob/main/module3_implementation.ipynb) and read through until you reach the first code cell in the **Before You Start** section.
+3. Open the Jupyter Notebook **[module3_implementation.ipynb](https://github.com/jeet-kapase-sap/2611_module3_bdc-main/blob/main/module3_implementation.ipynb)** and read through until you reach the first code cell in the **Before You Start** section.
 
    ![module3_implementation](images/ipynb.png)
 
