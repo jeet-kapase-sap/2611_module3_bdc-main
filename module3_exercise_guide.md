@@ -324,11 +324,12 @@ The `.env` file is now created. In the next section, you'll fill it with your AI
 
    > [!NOTE]
    > To execute a code cell, click the **play icon** beside the cell. You can also click into the code cell and press **Shift + Enter**.
+    <img width="444" height="87" alt="image" src="https://github.tools.sap/user-attachments/assets/f574c63b-a048-45d6-bc21-efe02bbc8247" />
 
 4. On the next screen, choose the recommended **Python 3.13**.
-
+    <img width="600" height="175" alt="image" src="https://github.tools.sap/user-attachments/assets/674be8e4-646c-4c95-9ac6-0c98948fe6b1" />
 5. The required libraries will now start installing. Once the libraries have been successfully installed, the kernel must be restarted. Choose **Restart** in the menu at the top.
-
+  <img width="730" height="399" alt="image" src="https://github.tools.sap/user-attachments/assets/fa05093e-b023-44d4-b34b-bb380ffc5b5a" />
 6. On the following pop-up window, choose **Restart**. It will take a few seconds for the kernel to restart. After it restarts, the environment is ready for use.
-
+  <img width="523" height="164" alt="image" src="https://github.tools.sap/user-attachments/assets/951f583a-d16c-4f08-a70c-847c38ac34a4" />
 7. Follow the step-by-step instructions provided in the Jupyter Notebook to complete the remaining parts of the exercise.
