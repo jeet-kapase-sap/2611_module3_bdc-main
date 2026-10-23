@@ -336,13 +336,9 @@ The `.env` file is now created. In the next section, you'll fill it with your AI
 
 ---
 
-## Section 2: Configure Jupyter and Python Extensions
+## Section 2: Configure Python Environment and Open Jupyter Notebook 
 
-1. Open Jupyter Notebook `module3_implementation.ipynb` and Read through the notebook until you get to the first code cell in the **Before You Start** section..
-
-   ![module3_implementation](images/ipynb.png)
-
-2. Create Virtual Python Environment. > ⚠️ **Note: SAP BAS Only** — skip to Step 4 if running in VS Code locally.
+1. Create Virtual Python Environment. > ⚠️ **Note: SAP BAS Only** — skip to Step 3 if running in VS Code locally.
 
     Open the terminal: **Terminal → New Terminal**
     
@@ -356,7 +352,7 @@ The `.env` file is now created. In the next section, you'll fill it with your AI
    
    ![Run Terminal Commands](images/terminalcommands.png)
 
-3. Select Virtual Environment Kernel - venv
+2. Select Virtual Environment Kernel - venv
 > **Note:** This step may take some-time or may need to refresh the browser if you do not see the venv kernel.
 
   Click the kernel selector (top-right of the notebook)
@@ -364,7 +360,11 @@ The `.env` file is now created. In the next section, you'll fill it with your AI
   Select Another Kernel → Python Environments → venv (Python 3.13.1)
   
    ![Select Kernel](images/selectkernel.png)
-    
+
+3. Open Jupyter Notebook `module3_implementation.ipynb` and Read through the notebook until you get to the first code cell in the **Before You Start** section.
+
+   ![module3_implementation](images/ipynb.png)
+
 4. Install Python Packages and The required libraries will now start installing. Once the libraries have been successfully installed, the kernel must be restarted. Choose **Restart** in the menu at the top.
 
    ![Restart Kernel](images/restartkernel1.png)
