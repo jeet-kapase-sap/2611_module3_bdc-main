@@ -86,7 +86,7 @@ You'll learn how to:
 ## Prerequisite for Bring Your Own Tenants (BYOT)
 
 > **Note: If you are unable to bring your own tenant, sign up for a [free SAP BTP Trial Account](https://discovery-center.cloud.sap/card/58250857-1c8e-440f-800a-a264969a3bc8) and a [free SAP Business Application Studio](https://help.sap.com/docs/bas/sap-business-application-studio/getting-started-with-trial-account) ensure both are fully set up and accessible before the hands-on session. Trial provisioning can take up to 24 hours. Please do not wait until the day of the workshop.**
- ![SAP BDC Data Products](images/btpbastrial.png)
+ ![Prerequisite](images/prerequisite.png)
 
 
 Before the day of the session, ensure you have access to the required applications and that configuration and setup are completed:
@@ -264,7 +264,7 @@ Set up the integration between SAP Datasphere and SAP BTP Destination Service. R
 
 ##  🛑 STOP!
 > [!CAUTION]
-> **STOP:** The hands-on sections below are intended to be performed on the event day. Complete all prerequisite setup steps above before the session. Do not proceed until instructed by the workshop facilitator.
+> The hands-on sections below are intended to be performed on the event day. Complete all prerequisite setup steps above before the session. Do not proceed until instructed by the workshop facilitator.
 
 ---
 
