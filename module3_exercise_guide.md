@@ -83,9 +83,9 @@ You'll learn how to:
  ![SAP BDC Data Products](images/btpbastrial.png)
 
 
-Before starting this exercise, ensure you have access to:
+Before the day of the session, ensure you have access to the required applications and that configuration and setup are completed:
 
-### SAP Business Data Cloud & SAP Datasphere
+### 1. SAP Business Data Cloud & SAP Datasphere
 
 | Role | Purpose | Needed For |
 |---|---|---|
@@ -94,7 +94,7 @@ Before starting this exercise, ensure you have access to:
 | DW Integrator | Import data products, load external data | Importing SAP BDC data products (PurchaseOrder, Supplier), uploading EXT_COUNTRY_RISK_INDEX CSV |
 | DW Data Consumer | Expose views/models for consumption via OData | Enabling "Expose for Consumption" on analytic models |
 
-### SAP BTP Subaccount
+### 2. SAP BTP Subaccount
 
 | Role / Entitlement | Purpose | Needed For |
 |---|---|---|
@@ -103,16 +103,18 @@ Before starting this exercise, ensure you have access to:
 | Cloud Foundry Org Manager / Space Developer | Deploy and manage CF apps | Deploying bdc_connectivity.py proxy app |
 | Destination Service (entitlement) | Lookup destination config at runtime | CF app binding — module3_bdc service instance |
 | SAP AI Core (entitlement) | LLM inference | GPT-5 deployment for natural language processing |
-| AI Core AI Launchpad access | Manage deployments, get service keys | Retrieving AICORE credentials and deployment URL |
+| AI Launchpad access | Manage deployments, get service keys | Retrieving AI Core credentials and deployment URL |
 
-### SAP Business Application Studio (SAP Build Code)
+### 3. SAP Business Application Studio (SAP Build Code)
 
 | Role | Purpose | Needed For |
 |---|---|---|
 | Business_Application_Studio_Developer | Access BAS dev spaces | Running the Jupyter notebook |
 | Dev Space: Full-Stack Cloud Application | Python runtime, terminal access | Executing notebook cells, creating venv |
 
-- A running **SAP AI Core** deployment with GPT-5 (or any model of your choice), including your deployment URL and service key (`clientid`, `clientsecret`, `url`, `AI_API_URL`) for the .env file.
+### 4. SAP AI Core Deployment
+
+A running **SAP AI Core** deployment with GPT-5 (or any model of your choice), including your deployment URL and service key (`clientid`, `clientsecret`, `url`, `AI_API_URL`) for the `.env` file.
 
 Gather the following values before the session and have them ready to paste into your `.env` file:
 
@@ -138,162 +140,195 @@ Your AI Core service key JSON maps to the `.env` as follows:
     "AI_API_URL": "→  Base URL for GPT5_DEPLOYMENT_URL"
   }
 }
+```
 
-- Activate SAP BDC Data Products `PurchaseOrder`, `PurchaseOrderItem`, `PurchaseOrderScheduleLine`, and `Supplier`.  
-  Data Package: **SAP Sourcing and Procurement Data Products (SAP S/4HANA Cloud Private Edition)**. Refer to [SAP Business Data Cloud — Activating Data Products](https://help.sap.com/docs/business-data-cloud/administering-sap-business-data-cloud/activating-data-products) for detailed steps. 
-  ![SAP BDC Data Products](images/bdcdataproducts.png)
+`GPT5_DEPLOYMENT_URL` = `AI_API_URL` + `/v2/inference/deployments/<your-deployment-id>`
 
-- **Important — Before You Begin:** This exercise uses two SAP Datasphere spaces:
-  - **SAP Managed:** `RI4400`
-  - **Customer Managed:** `AI_DATA_CONTEXT_FOUNDATION`
+---
 
-  The pre-built tables, models, and external dataset are provided as `.json` and `.csv` files, located in the `others` folder of the repository. Before importing, update the Space IDs in the `.json` files to match your landscape. A direct as-is import will fail without this adjustment.
+## Setup Steps
 
-- Requesting SAP BDC Data Products `PurchaseOrder`, `PurchaseOrderItem`, `PurchaseOrderScheduleLine`, and `Supplier` Access into a SAP Datasphere space. Refer to [SAP Datasphere — Requesting Access to Data Products](https://help.sap.com/docs/SAP_DATASPHERE/c8a54ee704e94e15926551293243fd1d/ea7cb802cbea47b39a441888873c3a49.html) for detailed steps.  
-  > **Note:** You can use an existing space, e.g. `AI_DATA_CONTEXT_FOUNDATION`  
-  ![SAP Datasphere, Request SAP BDC Data Products 1](images/datasphererequestdp_1.png) 
+### Step 1: Activate SAP BDC Data Products
 
-  ![SAP Datasphere, Request SAP BDC Data Products 2](images/datasphererequestdp_2.png)  
-  
-  ![SAP Datasphere, Request SAP BDC Data Products 3](images/datasphererequestdp_3.png)
+Activate SAP BDC Data Products `PurchaseOrder`, `PurchaseOrderItem`, `PurchaseOrderScheduleLine`, and `Supplier`.
 
-- In SAP Datasphere, Space `AI_DATA_CONTEXT_FOUNDATION`, import the following `.json` files:  
-  
-  ![SAP Datasphere, Import JSON Object](images/datasphereimportjson.png)
-  
-  1. `EXT_COUNTRY_RISK_INDEX.json`
-  2. `IL_PO_ITEM.json`
-  3. `V_SUPPLIER.json`
-  4. `HL_PO_HISTORY.json`
-  5. `V_SUPPLIER_RISK_SCORE.json`
-  6. `AM_PO_HISTORY.json`
-  7. `AM_SUPPLIER_RISK_SCORE.json`
+Data Package: **SAP Sourcing and Procurement Data Products (SAP S/4HANA Cloud Private Edition)**. Refer to [SAP Business Data Cloud — Activating Data Products](https://help.sap.com/docs/business-data-cloud/administering-sap-business-data-cloud/activating-data-products) for detailed steps.
 
-- In SAP Datasphere Space `AI_DATA_CONTEXT_FOUNDATION`, navigate to the Local Table `EXT_COUNTRY_RISK_INDEX` and upload the CSV file `EXT_COUNTRY_RISK_INDEX.csv` (Country Risk Index dataset) located in the `others` folder of the repository.  
-  > **Note:** If the dataset does not align with your business context, substitute it with a comparable reference dataset of your choice.  
-  ![SAP Datasphere, Upload the data](images/datasphereuploadthedata.png)
+![SAP BDC Data Products](images/bdcdataproducts.png)
 
-- In SAP Datasphere, expose the following OData services for consumption. Ensure the analytical and relational endpoints are activated for Space `AI_DATA_CONTEXT_FOUNDATION`:
+### Step 2: Prepare Datasphere Spaces
 
-  | Object | Type | OData Endpoint |
-  |--------|------|----------------|
-  | `AM_PO_HISTORY` | Analytical | `/api/v1/datasphere/consumption/analytical/AI_DATA_FOUNDATION/AM_PO_HISTORY/AM_PO_HISTORY` |
-  | `V_SUPPLIER` | Relational | `/api/v1/datasphere/consumption/relational/AI_DATA_FOUNDATION/V_SUPPLIER/V_SUPPLIER` |
-  | `AM_SUPPLIER_RISK_SCORE` | Analytical | `/api/v1/datasphere/consumption/analytical/AI_DATA_FOUNDATION/AM_SUPPLIER_RISK_SCORE/AM_SUPPLIER_RISK_SCORE` |
+> **Important — Before You Begin:** This exercise uses two SAP Datasphere spaces:
+> - **SAP Managed:** `RI4400`
+> - **Customer Managed:** `AI_DATA_CONTEXT_FOUNDATION`
+>
+> The pre-built tables, models, and external dataset are provided as `.json` and `.csv` files, located in the `others` folder of the repository. Before importing, update the Space IDs in the `.json` files to match your landscape. A direct as-is import will fail without this adjustment.
 
-  > **Note:** To expose an OData service in SAP Datasphere, navigate to the respective Analytic Model or View, open the properties, and enable **Expose for Consumption**. Refer to [SAP Datasphere — Consuming Data via OData](https://help.sap.com/docs/SAP_DATASPHERE/43509d67b8b84e66a30851e832f66911/7a453609c8694b029493e7d87e0de60a.html) for detailed steps.
+### Step 3: Request Data Product Access
 
-    ![SAP Datasphere, Expose for Consumption](images/generateodata1.png)
+Request SAP BDC Data Products `PurchaseOrder`, `PurchaseOrderItem`, `PurchaseOrderScheduleLine`, and `Supplier` access into a SAP Datasphere space. Refer to [SAP Datasphere — Requesting Access to Data Products](https://help.sap.com/docs/SAP_DATASPHERE/c8a54ee704e94e15926551293243fd1d/ea7cb802cbea47b39a441888873c3a49.html) for detailed steps.
 
-    ![SAP Datasphere, Generate Odata Request](images/generateodata2.png)
+> **Note:** You can use an existing space, e.g. `AI_DATA_CONTEXT_FOUNDATION`
 
+![SAP Datasphere, Request SAP BDC Data Products 1](images/datasphererequestdp_1.png)
 
-- An SAP BTP subaccount with the following services provisioned:
-  - **Integration Between SAP Datasphere and SAP BTP Destination Service** Refer to [How to Consume SAP Datasphere Analytical Models Using OData Services: Part 1 and Part 2 sections only](https://community.sap.com/t5/technology-blog-posts-by-sap/how-to-consume-sap-datasphere-analytical-models-to-sap-fiori-using-odata/ba-p/14445184) for detailed steps.
+![SAP Datasphere, Request SAP BDC Data Products 2](images/datasphererequestdp_2.png)
 
-    1. `Expose the Analytical Model for Consumption`
-    2. `Establish Trust Between Datasphere and BTP`
+![SAP Datasphere, Request SAP BDC Data Products 3](images/datasphererequestdp_3.png)
 
-        ![SAP BTP, Export XML IDP Trust Configuration](images/btpdestinationtrust.png)
+### Step 4: Import JSON Objects
 
-        ![SAP Datasphere, Trusted Identity Providers](images/dataspheretrustedidp.png)
+In SAP Datasphere, Space `AI_DATA_CONTEXT_FOUNDATION`, import the following `.json` files:
 
+![SAP Datasphere, Import JSON Object](images/datasphereimportjson.png)
 
-    3. `Configure OAuth in SAP Datasphere - Choose Oauth Client Purpose: API Access or Technical User that fits in your scenario`
+1. `EXT_COUNTRY_RISK_INDEX.json`
+2. `IL_PO_ITEM.json`
+3. `V_SUPPLIER.json`
+4. `HL_PO_HISTORY.json`
+5. `V_SUPPLIER_RISK_SCORE.json`
+6. `AM_PO_HISTORY.json`
+7. `AM_SUPPLIER_RISK_SCORE.json`
 
-        ![SAP Datasphere, OAuth Client_1](images/datasphereoauthclient1.png)
+### Step 5: Upload External Data
 
-        ![SAP Datasphere, OAuth Client_2](images/datasphereoauthclient2.png)
-  
-  - **Destination Service** instance with a configured SAP Datasphere destination — Type: `HTTP`, Name: `BDC-AI-Data-Foundation`
-    ![SAP BTP, Destination Service_1](images/btpdestinationservice1.png)
+In SAP Datasphere, Space `AI_DATA_CONTEXT_FOUNDATION`, navigate to the Local Table `EXT_COUNTRY_RISK_INDEX` and upload the CSV file `EXT_COUNTRY_RISK_INDEX.csv` (Country Risk Index dataset) located in the `others` folder of the repository.
 
-    ![SAP BTP, Destination Service_2](images/btpdestinationservice2.png)
+> **Note:** If the dataset does not align with your business context, substitute it with a comparable reference dataset of your choice.
 
-  - **Connectivity Service** instance bound to the CF app — Service: `Destination Service`, Plan: `lite`, Runtime Environment: `Cloud Foundry`, Name: `module3_bdc`
-    ![SAP BTP, Connectivity Service](images/btpconntectivityservice.png)
+![SAP Datasphere, Upload the data](images/datasphereuploadthedata.png)
+
+### Step 6: Expose OData Services
+
+In SAP Datasphere, expose the following OData services for consumption. Ensure the analytical and relational endpoints are activated for Space `AI_DATA_CONTEXT_FOUNDATION`:
+
+| Object | Type | OData Endpoint |
+|---|---|---|
+| `AM_PO_HISTORY` | Analytical | `/api/v1/datasphere/consumption/analytical/AI_DATA_FOUNDATION/AM_PO_HISTORY/AM_PO_HISTORY` |
+| `V_SUPPLIER` | Relational | `/api/v1/datasphere/consumption/relational/AI_DATA_FOUNDATION/V_SUPPLIER/V_SUPPLIER` |
+| `AM_SUPPLIER_RISK_SCORE` | Analytical | `/api/v1/datasphere/consumption/analytical/AI_DATA_FOUNDATION/AM_SUPPLIER_RISK_SCORE/AM_SUPPLIER_RISK_SCORE` |
+
+> **Note:** To expose an OData service in SAP Datasphere, navigate to the respective Analytic Model or View, open the properties, and enable **Expose for Consumption**. Refer to [SAP Datasphere — Consuming Data via OData](https://help.sap.com/docs/SAP_DATASPHERE/43509d67b8b84e66a30851e832f66911/7a453609c8694b029493e7d87e0de60a.html) for detailed steps.
+
+![SAP Datasphere, Expose for Consumption](images/generateodata1.png)
+
+![SAP Datasphere, Generate OData Request](images/generateodata2.png)
+
+### Step 7: Configure BTP Destination and Trust
+
+Set up the integration between SAP Datasphere and SAP BTP Destination Service. Refer to [How to Consume SAP Datasphere Analytical Models Using OData Services: Part 1 and Part 2 sections only](https://community.sap.com/t5/technology-blog-posts-by-sap/how-to-consume-sap-datasphere-analytical-models-to-sap-fiori-using-odata/ba-p/14445184) for detailed steps.
+
+1. **Expose the Analytical Model for Consumption**
+
+2. **Establish Trust Between Datasphere and BTP**
+
+   ![SAP BTP, Export XML IDP Trust Configuration](images/btpdestinationtrust.png)
+
+   ![SAP Datasphere, Trusted Identity Providers](images/dataspheretrustedidp.png)
+
+3. **Configure OAuth in SAP Datasphere** — Choose OAuth Client Purpose: `API Access` or `Technical User` that fits your scenario.
+
+   ![SAP Datasphere, OAuth Client 1](images/datasphereoauthclient1.png)
+
+   ![SAP Datasphere, OAuth Client 2](images/datasphereoauthclient2.png)
+
+### Step 8: Create BTP Destination and Service Instances
+
+- **Destination Service** instance with a configured SAP Datasphere destination — Type: `HTTP`, Name: `BDC-AI-Data-Foundation`.
+
+  ![SAP BTP, Destination Service 1](images/btpdestinationservice1.png)
+
+  ![SAP BTP, Destination Service 2](images/btpdestinationservice2.png)
+
+- **Connectivity Service** instance bound to the CF app — Service: `Destination Service`, Plan: `lite`, Runtime Environment: `Cloud Foundry`, Name: `module3_bdc`.
+
+  ![SAP BTP, Connectivity Service](images/btpconntectivityservice.png)
+
+### Additional Prerequisites
 
 - The SAP BTP Cloud Foundry CLI (`cf`) installed and logged in.
-
 - A GitHub account to clone the repository.
-
 - Basic familiarity with Python and Jupyter notebooks.
 
+---
+
 ## Architecture
+
 ![Module 3 Architecture](images/architecture.png)
 
-
+---
 
 ## Section 1: Clone & Create the Application
 
 ### Open SAP Build Lobby
+
 Before cloning the repository, you need a running SAP Business Application Studio / SAP Build Code dev space with Python support.
-  1. In SAP Business Application Studio, create a new dev space
-  2. Name your dev space (e.g., USERXXX_FullStack)
-  3. Select Full Stack Cloud Application as the application type
-  4. Under Additional SAP Extensions, enable Python Tools
-  5. Click Create Dev Space
 
-<img width="1913" height="956" alt="image" src="images/bas1.png" />
+1. In SAP Business Application Studio, create a new dev space.
+2. Name your dev space (e.g., `USERXXX_FullStack`).
+3. Select **Full Stack Cloud Application** as the application type.
+4. Under **Additional SAP Extensions**, enable **Python Tools**.
+5. Click **Create Dev Space**.
 
-Wait for the dev space to show RUNNING status, then click on the dev space name to open it.
+<img width="800" alt="Create Dev Space" src="images/bas1.png" />
+
+Wait for the dev space to show **RUNNING** status, then click on the dev space name to open it.
 
 ![Running Status](images/bas2.png)
 
-### Step 1: Clone Git the Repository and Enter the Git Repository URL
-Once your dev space is open in the editor, click Clone from Git.
+### Step 1: Clone the Git Repository
+
+Once your dev space is open in the editor, click **Clone from Git**.
 
 In the dialog, enter the following GitHub repository URL:
-``` 
+
+```
 https://github.com/jeet-kapase-sap/2611_module3_bdc-main.git
 ```
 
-<img width="2560" height="1226" alt="image" src="images/bas3.png" />
-
+<img width="800" alt="Clone from Git" src="images/bas3.png" />
 
 ### Step 2: Open the Cloned Project
-When prompted "Would you like to open the repository, or add it to the current workspace?", click Open.
+
+When prompted "Would you like to open the repository, or add it to the current workspace?", click **Open**.
 
 ![Open the Project](images/bas4.png)
 
-The project will open in SAP Business Application Studio
+The project will open in SAP Business Application Studio.
 
 ### Step 3: Create the Environment Configuration File
-Now you'll create a .env file to store your AI Core credentials securely.
-  1. In the Explorer panel, click on create a new file icon
-  2. Name the file name as .env including the dot at the beginning)
+
+Now you'll create a `.env` file to store your AI Core credentials securely.
+
+1. In the Explorer panel, click the **create a new file** icon.
+2. Name the file `.env` (including the dot at the beginning).
 
 ![.env file](images/envfile1.png)
 
-The .env file is now created. In the next section, you'll fill it with your AI Core credentials.
-
+The `.env` file is now created. In the next section, you'll fill it with your AI Core credentials.
 
 > [!NOTE]
-> The .env file stores sensitive credentials locally and is automatically excluded from version control by the .gitignore file. Never commit this file to Git.
+> The `.env` file stores sensitive credentials locally and is automatically excluded from version control by the `.gitignore` file. Never commit this file to Git.
 
+---
 
-## Section 6: Configure Jupyter and Python Extensions
+## Section 2: Configure Jupyter and Python Extensions
 
-  1. Open Jupyter Notebook module2_implementation.ipynb
-<img width="304" height="439" alt="image" src="https://github.tools.sap/user-attachments/assets/cc5d8825-6123-4b18-a099-a3ed0ff90004" />
+1. Open Jupyter Notebook `module3_implementation.ipynb`.
 
-  2. Read through the notebook until you get to the first code cell in the Setup and configuration section.
+   <img width="304" alt="Open Notebook" src="images/opennotebook.png" />
 
-  3. Run the first code cell to install the required python modules.
+2. Read through the notebook until you get to the first code cell in the **Setup and Configuration** section.
 
-     > [!NOTE]
-     > To execute a code cell, click the play icon beside the cell. It is also possible to execute it by clicking into the code cell and pressing Shift+Enter.
+3. Run the first code cell to install the required Python modules.
 
-<img width="444" height="87" alt="image" src="https://github.tools.sap/user-attachments/assets/f574c63b-a048-45d6-bc21-efe02bbc8247" />
+   > [!NOTE]
+   > To execute a code cell, click the **play icon** beside the cell. You can also click into the code cell and press **Shift + Enter**.
 
-  4. On the next screen, choose the recommended Python 3.13.
-<img width="600" height="175" alt="image" src="https://github.tools.sap/user-attachments/assets/674be8e4-646c-4c95-9ac6-0c98948fe6b1" />
+4. On the next screen, choose the recommended **Python 3.13**.
 
-  5. The required libraries will now start installing. Once the libraries have been successfully installed, the kernel must be restarted. Choose Restart in the menu on the top.
-<img width="730" height="399" alt="image" src="https://github.tools.sap/user-attachments/assets/fa05093e-b023-44d4-b34b-bb380ffc5b5a" />
+5. The required libraries will now start installing. Once the libraries have been successfully installed, the kernel must be restarted. Choose **Restart** in the menu at the top.
 
-  6. On the following pop-up window, Choose Restart. It will take a few seconds for the kernel to restart. After it restarts, the environment is ready for use!
-<img width="523" height="164" alt="image" src="https://github.tools.sap/user-attachments/assets/951f583a-d16c-4f08-a70c-847c38ac34a4" />
+6. On the following pop-up window, choose **Restart**. It will take a few seconds for the kernel to restart. After it restarts, the environment is ready for use.
 
-  7. Follow the step-by-step instructions provided in the Jupyter Notebook to complete the remaining parts of the exercise.
-
+7. Follow the step-by-step instructions provided in the Jupyter Notebook to complete the remaining parts of the exercise.
