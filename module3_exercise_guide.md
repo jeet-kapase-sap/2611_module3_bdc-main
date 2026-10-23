@@ -316,9 +316,9 @@ The `.env` file is now created. In the next section, you'll fill it with your AI
 
 1. Open Jupyter Notebook `module3_implementation.ipynb`.
 
-   <img width="304" height="439" alt="image" src="https://github.tools.sap/user-attachments/assets/cc5d8825-6123-4b18-a099-a3ed0ff90004" />
+   ![module3_implementation](images/ipynb.png)
 
-2. Read through the notebook until you get to the first code cell in the **Setup and Configuration** section.
+2. Read through the notebook until you get to the first code cell in the **Before You Start** section.
 
 3. Run the first code cell to install the required Python modules.
 
