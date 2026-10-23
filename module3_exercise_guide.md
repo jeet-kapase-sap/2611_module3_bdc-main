@@ -275,12 +275,13 @@ Set up the integration between SAP Datasphere and SAP BTP Destination Service. R
 
 ## Section 1: Clone & Create the Application
 
+---
 ## ✅ Checkpoint — Did Not Bring Your Own Tenant?
 
 Have you signed up for a [free SAP BTP Trial Account](https://discovery-center.cloud.sap/card/58250857-1c8e-440f-800a-a264969a3bc8) and a [free SAP Business Application Studio](https://help.sap.com/docs/bas/sap-business-application-studio/getting-started-with-trial-account)? If not, please do so now before moving forward.
 
-Please perform **[Step 8: Create BTP Destination and Service Instances](https://github.tools.sap/IA-C/2611_module3_bdc-main/blob/main/module3_exercise_guide.md#step-8-create-btp-destination-and-service-instances)** as mentioned in the prerequisites above. The required configuration parameter details can be found in [workshop_day_credentials.md](https://github.tools.sap/IA-C/2611_module3_bdc-main/blob/main/others/workshop_day_credentials.md) located in the `others` folder of this repository.
-
+Please perform **[Step 8: Create BTP Destination and Service Instances](https://github.tools.sap/IA-C/2611_module3_bdc-main/blob/main/module3_exercise_guide.md#step-8-create-btp-destination-and-service-instances)** as mentioned in the prerequisites above. The required configuration parameter details can be found in **[workshop_day_credentials.md](https://github.tools.sap/IA-C/2611_module3_bdc-main/blob/main/others/workshop_day_credentials.md)** located in the `others` folder of this repository.
+---
 
 ### Open SAP Business Application Studio
 
