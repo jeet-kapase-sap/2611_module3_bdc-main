@@ -113,11 +113,6 @@ Before starting this exercise, ensure you have access to:
 | Dev Space: Full-Stack Cloud Application | Python runtime, terminal access | Executing notebook cells, creating venv |
 
 - A running **SAP AI Core** deployment with GPT-5 (or any model of your choice), including your deployment URL and service key (`clientid`, `clientsecret`, `url`, `AI_API_URL`) for the .env file.
-## Prerequisite for Bring Your Own Tenant (BYOT)
-
-> **Note:** If you are unable to bring your own tenant, sign up for a [free SAP BTP Trial Account](https://www.sap.com/products/technology-platform/trial.html) and ensure it is fully set up and accessible before the hands-on session. Trial provisioning can take up to 24 hours — do not wait until the day of the workshop.
-
-### What to Keep Ready
 
 Gather the following values before the session and have them ready to paste into your `.env` file:
 
