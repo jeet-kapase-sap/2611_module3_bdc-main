@@ -75,7 +75,13 @@ You'll learn how to:
 │  └─────────────────────────────────────────────────────────────────────────┘   │
 └────────────────────────────────────────────────────────────────────────────────┘
 ```
+---
 
+## Architecture
+
+![Module 3 Architecture](images/architecture.png)
+
+---
 
 ## Prerequisite for Bring Your Own Tenant (BYOT)
 
@@ -249,12 +255,6 @@ Set up the integration between SAP Datasphere and SAP BTP Destination Service. R
 - The SAP BTP Cloud Foundry CLI (`cf`) installed and logged in.
 - A GitHub account to clone the repository.
 - Basic familiarity with Python and Jupyter notebooks.
-
----
-
-## Architecture
-
-![Module 3 Architecture](images/architecture.png)
 
 ---
 
