@@ -1,7 +1,7 @@
 # Module 3: Governed Business Context-Rich Answers from Multi-Source Data Products with SAP Business Data Cloud
 ## Introduction
 
-In this exercise, you'll understand how SAP Business Data Cloud data products serve as the governed data layer for AI-powered analytics, SAP-delivered data products (PurchaseOrder, Supplier) and custom products (Supplier Risk Score) are pre-modeled and ready to consume using SAP Generative AI Hub and SAP BTP connectivity services. The assistant answers natural language questions over governed, multi-source data, from basic single-service queries to complex three-service analytical questions spanning PO history, supplier master, and risk scores with no hallucination.
+In this exercise, you'll understand how SAP Business Data Cloud data products serve as the governed data layer for AI-powered analytics, SAP-delivered data products (PurchaseOrder, Supplier),and custom data products (Supplier Risk Score) are pre-modeled, exposed as OData services and ready to consume using SAP Generative AI Hub and SAP BTP connectivity services. The assistant answers natural language questions over governed, multi-source data, from basic single-service queries to complex three-service analytical questions spanning PO history, supplier master, and risk scores with no hallucination.
 
 You'll learn how to:
 ### Demo Section
@@ -11,7 +11,7 @@ You'll learn how to:
 - Configure SAP BTP Destination service to estabilish secure connection with SAP Datasphere.
 
 ### Hands-on Section
-- Connect SAP AI Core (GPT-5) to extract business parameters from natural language questions Connect an AI agent to SAP Business Data Cloud through a Cloud Foundry proxy app using BTP Destination Service and OData services exposed from SAP Datasphere.
+- Connect SAP AI Core (GPT-5) to extract business parameters from natural language questions Connect an LLM model (or AI agent) to SAP Business Data Cloud through a Cloud Foundry proxy app using BTP Destination Service and OData services exposed from SAP Datasphere.
 - Design governed business operations that map natural language questions to the right OData service: AM_PO_HISTORY for spend/delivery, V_SUPPLIER for master data, AM_SUPPLIER_RISK_SCORE for risk analytics.
 - Author LLM tool schemas that reflect data product semantics:expose the right fields, guide the LLM to use pre-computed measures (e.g., CountPurchaseOrder) instead of counting raw rows, and set appropriate parameter constraints.
 - Build a system prompt that teaches the LLM domain context:risk scoring logic (weighted dimensions), aggregation rules, and multi-service orchestration pattern.
@@ -37,7 +37,7 @@ You'll learn how to:
                                                      ▼
                                           ┌─────────────────────────────┐
                                           │    SAP Datasphere           │
-                                          │    (OData V2/V4 Service)    │
+                                          │    (OData V4 Service)       │
                                           └──────────┬──────────────────┘
                                                      │
                                                      ▼
@@ -83,7 +83,7 @@ You'll learn how to:
 
 ---
 
-## Prerequisite for Bring Your Own Tenant (BYOT)
+## Prerequisite for Bring Your Own Tenants (BYOT)
 
 > **Note:** If you are unable to bring your own tenant, sign up for a [free SAP BTP Trial Account](https://discovery-center.cloud.sap/card/58250857-1c8e-440f-800a-a264969a3bc8) and a [free SAP Business Application Studio](https://help.sap.com/docs/bas/sap-business-application-studio/getting-started-with-trial-account)ensure both are fully set up and accessible before the hands-on session. Trial provisioning can take up to 24 hours. Please do not wait until the day of the workshop.
  ![SAP BDC Data Products](images/btpbastrial.png)
@@ -95,10 +95,12 @@ Before the day of the session, ensure you have access to the required applicatio
 
 | Role | Purpose | Needed For |
 |---|---|---|
+| BDC Administrator | Access SAP Business Data Cloud cockpit | Activating and managing SAP data products (PurchaseOrder, Supplier) |
 | DW Space Administrator | Create and manage spaces, assign members | Creating AI_DATA_CONTEXT_FOUNDATION space |
 | DW Modeler | Create SQL views, analytic models, manage tables | Building V_SUPPLIER_RISK_SCORE, AM_PO_HISTORY, AM_SUPPLIER_RISK_SCORE |
-| DW Integrator | Import data products, load external data | Importing SAP BDC data products (PurchaseOrder, Supplier), uploading EXT_COUNTRY_RISK_INDEX CSV |
+| DW Integrator | Import data products, load external data | Requesting SAP BDC data products into Datasphere space, uploading EXT_COUNTRY_RISK_INDEX CSV |
 | DW Data Consumer | Expose views/models for consumption via OData | Enabling "Expose for Consumption" on analytic models |
+
 
 ### 2. SAP BTP Subaccount
 
@@ -118,9 +120,11 @@ Before the day of the session, ensure you have access to the required applicatio
 | Business_Application_Studio_Developer | Access BAS dev spaces | Running the Jupyter notebook |
 | Dev Space: Full-Stack Cloud Application | Python runtime, terminal access | Executing notebook cells, creating venv |
 
-### 4. SAP AI Core Deployment
+### 4. SAP AI Launchpad and LLM Model Core Deployment
 
-A running **SAP AI Core** deployment with GPT-5 (or any model of your choice), including your deployment URL and service key (`clientid`, `clientsecret`, `url`, `AI_API_URL`) for the `.env` file.
+A running **SAP AI Core** deployment with GPT-5 (or any model of your choice), including your deployment URL and service key (`clientid`, `clientsecret`, `url`, `AI_API_URL`) for the `.env` file.[SAP AI Launchpad User Guide](https://help.sap.com/doc/3cf0f44d0e934b329535835198aa59e0/CLOUD/en-US/04ed96d5a9864b5a9b6f2be56d396a37.pdf)
+
+![SAP AI Launchpad](images/ailaunchpad.png)
 
 Gather the following values before the session and have them ready to paste into your `.env` file:
 
@@ -318,7 +322,7 @@ The `.env` file is now created. In the next section, you'll fill it with your AI
 
    ![module3_implementation](images/ipynb.png)
 
-2. Create Virtual Python Environment.
+2. Create Virtual Python Environment. > ⚠️ **Note: SAP BAS Only** — skip to Step 4 if running in VS Code locally.
 
     Open the terminal: **Terminal → New Terminal**
     
