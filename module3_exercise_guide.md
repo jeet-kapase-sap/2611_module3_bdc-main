@@ -273,7 +273,7 @@ Set up the integration between SAP Datasphere and SAP BTP Destination Service. R
 
 ---
 
-## Section 1: Clone & Create the Application
+## Section 1: Create Dev Space, Clone the Repository & Open the Project
 
 ---
 ## ✅ Checkpoint — Did Not Bring Your Own Tenant?
