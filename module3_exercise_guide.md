@@ -85,11 +85,64 @@ You'll learn how to:
 
 Before starting this exercise, ensure you have access to:
 
-- **SAP Business Data Cloud & SAP Datasphere** — Admin and Modeler Roles.
-- **SAP BTP** subaccount with the necessary roles.
-- **SAP Build Code** (SAP Business Application Studio).
-- A running **SAP AI Core** deployment with GPT-5 (or any model of your choice), including your deployment URL and service key (`clientid`, `clientsecret`, `url`, `AI_API_URL`).
+### SAP Business Data Cloud & SAP Datasphere
 
+| Role | Purpose | Needed For |
+|---|---|---|
+| DW Space Administrator | Create and manage spaces, assign members | Creating AI_DATA_CONTEXT_FOUNDATION space |
+| DW Modeler | Create SQL views, analytic models, manage tables | Building V_SUPPLIER_RISK_SCORE, AM_PO_HISTORY, AM_SUPPLIER_RISK_SCORE |
+| DW Integrator | Import data products, load external data | Importing SAP BDC data products (PurchaseOrder, Supplier), uploading EXT_COUNTRY_RISK_INDEX CSV |
+| DW Data Consumer | Expose views/models for consumption via OData | Enabling "Expose for Consumption" on analytic models |
+
+### SAP BTP Subaccount
+
+| Role / Entitlement | Purpose | Needed For |
+|---|---|---|
+| Subaccount Administrator | Manage services, destinations, CF org | Overall setup |
+| Destination Administrator | Create and configure BTP destinations | Creating BDC-AI-Data-Foundation destination pointing to Datasphere |
+| Cloud Foundry Org Manager / Space Developer | Deploy and manage CF apps | Deploying bdc_connectivity.py proxy app |
+| Destination Service (entitlement) | Lookup destination config at runtime | CF app binding — module3_bdc service instance |
+| SAP AI Core (entitlement) | LLM inference | GPT-5 deployment for natural language processing |
+| AI Core AI Launchpad access | Manage deployments, get service keys | Retrieving AICORE credentials and deployment URL |
+
+### SAP Business Application Studio (SAP Build Code)
+
+| Role | Purpose | Needed For |
+|---|---|---|
+| Business_Application_Studio_Developer | Access BAS dev spaces | Running the Jupyter notebook |
+| Dev Space: Full-Stack Cloud Application | Python runtime, terminal access | Executing notebook cells, creating venv |
+
+- A running **SAP AI Core** deployment with GPT-5 (or any model of your choice), including your deployment URL and service key (`clientid`, `clientsecret`, `url`, `AI_API_URL`) for the .env file.
+## Prerequisite for Bring Your Own Tenant (BYOT)
+
+> **Note:** If you are unable to bring your own tenant, sign up for a [free SAP BTP Trial Account](https://www.sap.com/products/technology-platform/trial.html) and ensure it is fully set up and accessible before the hands-on session. Trial provisioning can take up to 24 hours — do not wait until the day of the workshop.
+
+### What to Keep Ready
+
+Gather the following values before the session and have them ready to paste into your `.env` file:
+
+| `.env` Variable | Value | Where to Find It |
+|---|---|---|
+| `AICORE_AUTH_URL` | AI Core OAuth URL (e.g. `https://<subaccount>.authentication.<region>.hana.ondemand.com`) | BTP Cockpit → Instances → AI Core → Service Key → `url` |
+| `AICORE_CLIENT_ID` | AI Core client ID (e.g. `sb-xxxxxxxx!bxxxxxx\|aicore!b540`) | BTP Cockpit → Instances → AI Core → Service Key → `clientid` |
+| `AICORE_CLIENT_SECRET` | AI Core client secret | BTP Cockpit → Instances → AI Core → Service Key → `clientsecret` |
+| `GPT5_DEPLOYMENT_URL` | LLM deployment endpoint (e.g. `https://api.ai.prod.<region>.aws.ml.hana.ondemand.com/v2/inference/deployments/<id>`) | AI Launchpad → Deployments → your GPT-5 deployment → Deployment URL |
+| `DESTINATION` | BTP Destination name pointing to SAP Datasphere (e.g. `BDC-AI-Data-Foundation`) | BTP Cockpit → Connectivity → Destinations → Destination Name |
+| `BDC_PROXY_URL` | Cloud Foundry app route URL (e.g. `https://bdc-connection-xxxx.cfapps.<region>.hana.ondemand.com`) | BTP Cockpit → Cloud Foundry → Applications → your app → Routes |
+
+### Service Key to `.env` Mapping
+
+Your AI Core service key JSON maps to the `.env` as follows:
+
+```json
+{
+  "clientid":     "→  AICORE_CLIENT_ID",
+  "clientsecret": "→  AICORE_CLIENT_SECRET",
+  "url":          "→  AICORE_AUTH_URL",
+  "serviceurls": {
+    "AI_API_URL": "→  Base URL for GPT5_DEPLOYMENT_URL"
+  }
+}
 
 - Activate SAP BDC Data Products `PurchaseOrder`, `PurchaseOrderItem`, `PurchaseOrderScheduleLine`, and `Supplier`.  
   Data Package: **SAP Sourcing and Procurement Data Products (SAP S/4HANA Cloud Private Edition)**. Refer to [SAP Business Data Cloud — Activating Data Products](https://help.sap.com/docs/business-data-cloud/administering-sap-business-data-cloud/activating-data-products) for detailed steps. 
@@ -215,7 +268,7 @@ Now you'll create a .env file to store your AI Core credentials securely.
   1. In the Explorer panel, click on create a new file icon
   2. Name the file name as .env including the dot at the beginning)
 
-![.env file](images/envfile.png)
+![.env file](images/envfile1.png)
 
 The .env file is now created. In the next section, you'll fill it with your AI Core credentials.
 
