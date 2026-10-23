@@ -201,6 +201,8 @@ In SAP Datasphere, Space `AI_DATA_CONTEXT_FOUNDATION`, import the following `.js
 6. `AM_PO_HISTORY.json`
 7. `AM_SUPPLIER_RISK_SCORE.json`
 
+> The pre-built tables, models, and external dataset are provided as `.json` and `.csv` files, located in the `others` folder of the repository. Before importing, update the Space IDs in the `.json` files to match your landscape. A direct as-is import will fail without this adjustment.
+
 ### Step 5: Upload External Data
 
 In SAP Datasphere, Space `AI_DATA_CONTEXT_FOUNDATION`, navigate to the Local Table `EXT_COUNTRY_RISK_INDEX` and upload the CSV file `EXT_COUNTRY_RISK_INDEX.csv` (Country Risk Index dataset) located in the `others` folder of the repository.
@@ -208,6 +210,8 @@ In SAP Datasphere, Space `AI_DATA_CONTEXT_FOUNDATION`, navigate to the Local Tab
 > **Note:** If the dataset does not align with your business context, substitute it with a comparable reference dataset of your choice.
 
 ![SAP Datasphere, Upload the data](images/datasphereuploadthedata.png)
+
+> The pre-built tables, and external dataset are provided as `.json` and `.csv` files, located in the `others` folder of the repository. Before importing, update the Space IDs in the `.json` files to match your landscape. A direct as-is import will fail without this adjustment.
 
 ### Step 6: Expose OData Services
 
@@ -271,10 +275,12 @@ Set up the integration between SAP Datasphere and SAP BTP Destination Service. R
 
 ## Section 1: Clone & Create the Application
 
-### Open SAP Business Application Studio
+## ✅ Checkpoint — Did Not Bring Your Own Tenant?
 
+Have you signed up for a [free SAP BTP Trial Account](https://discovery-center.cloud.sap/card/58250857-1c8e-440f-800a-a264969a3bc8) and a [free SAP Business Application Studio](https://help.sap.com/docs/bas/sap-business-application-studio/getting-started-with-trial-account)? If not, please do so now before moving forward.
 
-## Section 1: Clone & Create the Application
+Please perform **Step 8: Create BTP Destination and Service Instances** as mentioned in the prerequisites above. The required details can be found in `workshop_day_credentials.md` located in the `others` folder of this repository.
+
 
 ### Open SAP Business Application Studio
 
