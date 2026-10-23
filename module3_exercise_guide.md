@@ -320,12 +320,12 @@ The `.env` file is now created. In the next section, you'll fill it with your AI
 
 2. Create Virtual Python Environment.
 
-   > Open the terminal: **Terminal → New Terminal**
-   > ```bash
-     python3 -m venv ~/venv
-      ~/venv/bin/pip install python-dotenv pandas matplotlib requests ipykernel
-      ~/venv/bin/python -m ipykernel install --user --name=venv --display-name="Python (venv)"
-      ```
+    Open the terminal: **Terminal → New Terminal**
+   ```bash
+    python3 -m venv ~/venv
+    ~/venv/bin/pip install python-dotenv pandas matplotlib requests ipykernel
+    ~/venv/bin/python -m ipykernel install --user --name=venv --display-name="Python (venv)"
+    ```
    
    ![module3_implementation](images/ipynb.png)
 
