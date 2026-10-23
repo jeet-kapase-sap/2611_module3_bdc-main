@@ -314,17 +314,20 @@ The `.env` file is now created. In the next section, you'll fill it with your AI
 
 ## Section 2: Configure Jupyter and Python Extensions
 
-1. Open Jupyter Notebook `module3_implementation.ipynb`.
+1. Open Jupyter Notebook `module3_implementation.ipynb` and Read through the notebook until you get to the first code cell in the **Before You Start** section..
 
    ![module3_implementation](images/ipynb.png)
 
-2. Read through the notebook until you get to the first code cell in the **Before You Start** section.
+2. Create Virtual Python Environment.
 
-3. Run the first code cell to install the required Python modules.
-
-   > [!NOTE]
-   > To execute a code cell, click the **play icon** beside the cell. You can also click into the code cell and press **Shift + Enter**.
-   <imgwidth="444" height="87" alt="image" src="https://github.tools.sap/user-attachments/assets/f574c63b-a048-45d6-bc21-efe02bbc8247" />
+   > Open the terminal: **Terminal → New Terminal**
+   > ```bash
+     python3 -m venv ~/venv
+      ~/venv/bin/pip install python-dotenv pandas matplotlib requests ipykernel
+      ~/venv/bin/python -m ipykernel install --user --name=venv --display-name="Python (venv)"
+      ```
+   
+   ![module3_implementation](images/ipynb.png)
 
 4. On the next screen, choose the recommended **Python 3.13**.
    <img width="600" height="175" alt="image" src="https://github.tools.sap/user-attachments/assets/674be8e4-646c-4c95-9ac6-0c98948fe6b1" />
