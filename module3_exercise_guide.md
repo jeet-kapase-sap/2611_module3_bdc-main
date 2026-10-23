@@ -321,18 +321,33 @@ The `.env` file is now created. In the next section, you'll fill it with your AI
 2. Create Virtual Python Environment.
 
     Open the terminal: **Terminal → New Terminal**
+    
+    Run these three commands:
+
    ```bash
     python3 -m venv ~/venv
     ~/venv/bin/pip install python-dotenv pandas matplotlib requests ipykernel
     ~/venv/bin/python -m ipykernel install --user --name=venv --display-name="Python (venv)"
     ```
    
-   ![module3_implementation](images/ipynb.png)
+   ![Run Terminal Commands](images/terminalcommands.png)
 
-4. On the next screen, choose the recommended **Python 3.13**.
-   <img width="600" height="175" alt="image" src="https://github.tools.sap/user-attachments/assets/674be8e4-646c-4c95-9ac6-0c98948fe6b1" />
-5. The required libraries will now start installing. Once the libraries have been successfully installed, the kernel must be restarted. Choose **Restart** in the menu at the top.
-   <img width="730" height="399" alt="image" src="https://github.tools.sap/user-attachments/assets/fa05093e-b023-44d4-b34b-bb380ffc5b5a" />
-6. On the following pop-up window, choose **Restart**. It will take a few seconds for the kernel to restart. After it restarts, the environment is ready for use.
-   <img width="523" height="164" alt="image" src="https://github.tools.sap/user-attachments/assets/951f583a-d16c-4f08-a70c-847c38ac34a4" />
-7. Follow the step-by-step instructions provided in the Jupyter Notebook to complete the remaining parts of the exercise.
+3. Select Virtual Environment Kernel - venv
+> **Note:** This step may take some-time or may need to refresh the browser if you do not see the venv kernel.
+
+  Click the kernel selector (top-right of the notebook)
+
+  Select Another Kernel → Python Environments → venv (Python 3.13.1)
+  
+   ![Select Kernel](images/selectkernel.png)
+    
+4. Install Python Packages and The required libraries will now start installing. Once the libraries have been successfully installed, the kernel must be restarted. Choose **Restart** in the menu at the top.
+
+   ![Restart Kernel](images/restartkernel1.png)
+
+
+   ![Restart Kernel](images/restartkernel2.png)
+  
+  It will take a few seconds for the kernel to restart. After it restarts, the environment is ready for use.
+
+5. Follow the step-by-step instructions provided in the Jupyter Notebook to complete the remaining parts of the exercise.
