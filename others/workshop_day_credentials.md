@@ -1,22 +1,21 @@
-# Workshop Day — Connection Credentials
+# Workshop Day: Connection Credentials
 
 <!-- TODO: Replace placeholder values with actual credentials before the workshop day. Remove this file from the repository after the event. -->
 
 > [!IMPORTANT]
 > **This file will be updated with connection details during the workshop. It is not available until then.**
 
-## BTP Destination Configuration
+## SAP BTP Destination Configuration
 
 | Property | Value |
 |---|---|
 | Name | `BDC-AI-Data-Foundation` |
 | Type | `HTTP` |
-| URL | `https://<datasphere-url>` |
+| URL | `https://bdc-ac-dsp.eu10.hcs.cloud.sap` |
 | Proxy Type | `Internet` |
-| Authentication | `OAuth2SAMLBearerAssertion` |
-| Audience | `<audience>` |
-| Token Service URL | `<token-url>` |
-| Client Key | `<client-key>` |
+| Authentication | `OAuth2ClientCredentials` |
+| Token Service URL | `https://bdc-ac-dsp.authentication.eu10.hana.ondemand.com/oauth/token` |
+| Client ID | `<client-key>` |
 | Client Secret | `<client-secret>` |
 
 ## `.env` File
