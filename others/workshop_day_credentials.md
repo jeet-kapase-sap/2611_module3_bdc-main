@@ -1,6 +1,9 @@
 # Workshop Day — Connection Credentials
 
-> **This file is updated and available only during the workshop session.**
+<!-- TODO: Replace placeholder values with actual credentials before the workshop day. Remove this file from the repository after the event. -->
+
+> [!IMPORTANT]
+> **This file will be updated with connection details during the workshop. It is not available until then.**
 
 ## BTP Destination Configuration
 
