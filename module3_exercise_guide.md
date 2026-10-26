@@ -121,6 +121,41 @@ Before the day of the session, ensure you have access to the required applicatio
 | Business_Application_Studio_Developer | Access BAS dev spaces | Running the Jupyter notebook |
 | Dev Space: Full-Stack Cloud Application | Python runtime, terminal access | Executing notebook cells, creating venv |
 
+### 4. SAP AI Core and Service Key & Credentials
+You need credentials from SAP BTP Cockpit and AI Launchpad to configure the `.env` file.
+
+#### 4a. Get Service Key from BTP Cockpit
+
+1. Open **SAP BTP Cockpit** → navigate to your subaccount.
+2. Go to **Services → Instances and Subscriptions**.
+3. Find your **SAP AI Core** instance.
+4. Click on the instance, then click **1 key** under the Credentials column.
+
+   ![SAP AI Core Instance](images/aicore1.png)
+
+5. Click on the service key name (e.g., `aicore-key`) to view the credentials.
+6. You'll see a JSON structure — note the following fields:
+
+   ![SAP AI Core Service Key](images/aicore2.png)
+
+   | Service Key Field | Maps to `.env` Variable |
+   |---|---|
+   | `clientid` | `AICORE_CLIENT_ID` |
+   | `clientsecret` | `AICORE_CLIENT_SECRET` |
+   | `url` | `AICORE_AUTH_URL` |
+   | `serviceurls.AI_API_URL` | Base URL for `GPT5_DEPLOYMENT_URL` |
+
+#### 4b. Get Resource Group from AI Launchpad
+
+7. Open **SAP AI Launchpad**.
+8. Navigate to **Workspaces**.
+9. Note the workspace and resource group name (e.g., `default`).
+
+   ![SAP AI Core Resource Group](images/aicore3.png)
+
+> [!NOTE]
+> If you have a different resource group, use that instead of `default`.
+
 ### 4. SAP AI Launchpad and LLM Model Core Deployment
 
 A running **SAP AI Core** deployment with GPT-5 (or any model of your choice), including your deployment URL and service key (`clientid`, `clientsecret`, `url`, `AI_API_URL`) for the `.env` file.[SAP AI Launchpad User Guide](https://help.sap.com/doc/3cf0f44d0e934b329535835198aa59e0/CLOUD/en-US/04ed96d5a9864b5a9b6f2be56d396a37.pdf)
