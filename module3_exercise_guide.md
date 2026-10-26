@@ -156,7 +156,7 @@ You need credentials from SAP BTP Cockpit and AI Launchpad to configure the `.en
 > [!NOTE]
 > If you have a different resource group, use that instead of `default`.
 
-### 4. SAP AI Launchpad and LLM Model Core Deployment
+### 5. SAP AI Launchpad and LLM Model Core Deployment
 
 A running **SAP AI Core** deployment with GPT-5 (or any model of your choice), including your deployment URL and service key (`clientid`, `clientsecret`, `url`, `AI_API_URL`) for the `.env` file.[SAP AI Launchpad User Guide](https://help.sap.com/doc/3cf0f44d0e934b329535835198aa59e0/CLOUD/en-US/04ed96d5a9864b5a9b6f2be56d396a37.pdf)
 
