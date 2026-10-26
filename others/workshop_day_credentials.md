@@ -26,7 +26,7 @@ Copy and paste the following into your `.env` file:
 # ── AI Core / GenAI Hub ──────────────────────────────────────────────────────
 # Source: BTP Cockpit → Instances → AI Core → Service Key
 # These credentials authenticate with SAP AI Core to access the LLM deployment.
-AICORE_AUTH_URL=
+AICORE_AUTH_URL=https://mx-adoption-lab.authentication.eu10.hana.ondemand.com
 AICORE_CLIENT_ID=
 AICORE_CLIENT_SECRET=
 
