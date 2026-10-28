@@ -1,4 +1,4 @@
-# Module 3: Governed Business Context-Rich Answers from Multi-Source Data Products with SAP Business Data Cloud
+# The Procurement Context Engine: Governed Business Context-Rich Answers from Multi-Source Data Products with SAP Business Data Cloud
 ## Introduction
 
 In this exercise, you'll understand how SAP Business Data Cloud data products serve as the governed data layer for AI-powered analytics, SAP-delivered data products (PurchaseOrder, Supplier),and custom data products (Supplier Risk Score) are pre-modeled, exposed as OData services and ready to consume using SAP Generative AI Hub and SAP BTP connectivity services. The assistant answers natural language questions over governed, multi-source data, from basic single-service queries to complex three-service analytical questions spanning PO history, supplier master, and risk scores with no hallucination.
@@ -18,7 +18,7 @@ You'll learn how to:
 - Orchestrate multi-round, multi-service LLM tool calls: the LLM autonomously chains calls across three services (e.g., get risk scores → resolve supplier names → combine into a single answer) without human intervention.
 - Ask natural language questions over governed, multi-source data, from basic single-service queries to complex three-service analytical questions spanning PO history, supplier master, and risk scores.
 
-### 🏗️ Architecture: Module 3 SAP BDC Data Products Connectivity with Business context and semantics
+### 🏗️ Architecture: The Procurement Context Engine, SAP BDC Data Products Connectivity with Business context and semantics
 
 ```
 ┌─────────────────┐         HTTPS           ┌─────────────────────────────────────┐
@@ -79,7 +79,7 @@ You'll learn how to:
 
 ## Architecture
 
-![Module 3 Architecture](images/architecture.png)
+![The Procurement Context Engine Architecture](images/architecture.png)
 
 ---
 
