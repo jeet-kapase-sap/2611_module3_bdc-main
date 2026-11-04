@@ -22,4 +22,4 @@ applications:
                                         # Bind gives the app access to BDC-AI-Data-Foundation destination
   env:
     DESTINATION: BDC-AI-Data-Foundation # Default destination name — matches .env in notebook
-    PYTHON_VERSION: 3.11.16            # Pin Python version for reproducibility
+    PYTHON_VERSION: 3.11.18            # Pin Python version for reproducibility
