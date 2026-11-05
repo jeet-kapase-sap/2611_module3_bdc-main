@@ -15,7 +15,7 @@
 | Proxy Type | `Internet` |
 | Authentication | `OAuth2ClientCredentials` |
 | Token Service URL | `https://bdc-ac-dsp.authentication.eu10.hana.ondemand.com/oauth/token` |
-| Client ID | sb-ead6cc68-47ca-4a4a-b391-616a3274a71b!b556820|client!b3650 |
+| Client ID | `sb-ead6cc68-47ca-4a4a-b391-616a3274a71b!b556820\|client!b3650` |
 | Client Secret | `f8883986-468a-4b8c-8eaa-7057a7769ba6$5G8_P0_sp_KJNGTcMaGSbI3TJAdHdMliW8LQ4Y8D4bo=` |
 
 ## `.env` File
